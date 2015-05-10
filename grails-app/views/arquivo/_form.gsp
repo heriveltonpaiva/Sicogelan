@@ -25,7 +25,7 @@
 		<g:message code="arquivo.arquivo.label" default="Arquivo" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="arquivo" type="number" value="${arquivoInstance.arquivo}" required=""/>
+	<input type="file" id="arquivo" name="arquivo" />
 
 </div>
 

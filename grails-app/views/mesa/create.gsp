@@ -25,13 +25,15 @@
 				</g:eachError>
 			</ul>
 			</g:hasErrors>
-			<g:form url="[resource:mesaInstance, action:'save']" >
+			<g:form url="[resource:mesaInstance, action:'save']"  enctype="multipart/form-data" >
 				<fieldset class="form">
 					<g:render template="form"/>
 				</fieldset>
+                <div class="panel-heading">
 				<fieldset class="buttons">
-					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />
+					<g:submitButton  name="create" class="btn btn-primary" value="${message(code: 'default.button.create.label', default: 'Create')}" />
 				</fieldset>
+                </div>
 			</g:form>
 		</div>
 	</body>

@@ -45,8 +45,6 @@
 				<li class="fieldcontain">
 					<span id="arquivo-label" class="property-label"><g:message code="arquivo.arquivo.label" default="Arquivo" /></span>
 					
-						<span class="property-value" aria-labelledby="arquivo-label"><g:fieldValue bean="${arquivoInstance}" field="arquivo"/></span>
-					
 				</li>
 				</g:if>
 			

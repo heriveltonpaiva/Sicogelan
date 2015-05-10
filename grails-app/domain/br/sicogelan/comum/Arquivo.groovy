@@ -4,7 +4,7 @@ class Arquivo {
 
     String nome
     String contentType
-    Byte arquivo
+    byte[] arquivo
 
     static constraints = {
         nome(blank:false)
