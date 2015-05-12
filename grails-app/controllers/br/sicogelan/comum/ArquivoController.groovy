@@ -23,6 +23,11 @@ class ArquivoController {
     def create() {
         respond new Arquivo(params)
     }
+    def showImagem() {
+        def fileInstance = Arquivo.get(params.id)
+        response.outputStream.write(fileInstance.getArquivo())
+        response.outputStream.flush()
+    }
 
     @Transactional
     def save(Arquivo arquivoInstance) {

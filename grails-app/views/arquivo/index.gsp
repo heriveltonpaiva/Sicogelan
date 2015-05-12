@@ -39,9 +39,11 @@
 						<td><g:link action="show" id="${arquivoInstance.id}">${fieldValue(bean: arquivoInstance, field: "nome")}</g:link></td>
 					
 						<td>${fieldValue(bean: arquivoInstance, field: "contentType")}</td>
-					
-						<td>${fieldValue(bean: arquivoInstance, field: "arquivo")}</td>
-					
+
+
+                        <td>
+                        <img style="width: 200px; height: 200px" src="${createLink(controller:'arquivo', action:'showImagem', id:"${arquivoInstance.id}")}" width='300' />
+                        </td>
 					</tr>
 				</g:each>
 				</tbody>
