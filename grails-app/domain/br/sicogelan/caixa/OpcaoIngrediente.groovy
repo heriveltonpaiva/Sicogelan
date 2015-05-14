@@ -4,8 +4,10 @@ class OpcaoIngrediente {
 
     int quantidade;
     double quantidade_real;
-    OpcaoCardapio opcaoCardapio
-    Produto produto
+    Date dateCreated
+    Date lastUpdated
+
+    static belongsTo = [produto:Produto, opcaoCardapio:OpcaoCardapio]
 
     static constraints = {
 

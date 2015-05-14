@@ -8,9 +8,10 @@ class Compra {
     int quantidade
     double quantidadeReal
     String observacao
-    RegistroGeral registroGeral
-    Produto produto
+    Date dateCreated
+    Date lastUpdated
 
+    static belongsTo= [produto:Produto, registroGeral:RegistroGeral]
     static constraints = {
 
         produto()

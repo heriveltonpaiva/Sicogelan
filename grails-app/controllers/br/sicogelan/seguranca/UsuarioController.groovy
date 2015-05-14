@@ -3,11 +3,9 @@ package br.sicogelan.seguranca
 
 
 import static org.springframework.http.HttpStatus.*
-import org.springframework.security.access.annotation.Secured
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
-@Secured(['ROLE_ADMIN'])
 class UsuarioController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]

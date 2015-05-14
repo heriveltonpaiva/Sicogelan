@@ -6,7 +6,12 @@ class OpcaoUnidadeMedida {
     double valorAcrescido
     int quantidade
     double quantidadeReal
-    OpcaoCardapio opcaoCardapio
+    Date dateCreated
+    Date lastUpdated
+
+    static hasOne = [itemPedido:ItemPedido]
+    static belongsTo = [opcaoCardapio:OpcaoCardapio]
+
 
     static constraints = {
         descricao()

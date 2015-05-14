@@ -5,11 +5,14 @@ import br.sicogelan.comum.Arquivo
 class Cardapio {
 
     String descricao
-    Arquivo arquivo
+    Date dateCreated
+    Date lastUpdated
+
+    static belongsTo = [arquivo: Arquivo]
 
     static constraints = {
 
-        descricao()
+        descricao(blank: false)
         arquivo()
     }
 }

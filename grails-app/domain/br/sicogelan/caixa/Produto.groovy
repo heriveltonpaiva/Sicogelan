@@ -7,6 +7,9 @@ class Produto {
     double quantidadeReal
     int quantidadeMinima
     double quantidadeMinimaReal
+    Date dateCreated
+    Date lastUpdated
+
 
     static constraints = {
 

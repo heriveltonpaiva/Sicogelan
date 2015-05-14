@@ -77,6 +77,15 @@
 				</li>
 				</g:if>
 			
+				<g:if test="${usuarioInstance?.registroGeral}">
+				<li class="fieldcontain">
+					<span id="registroGeral-label" class="property-label"><g:message code="usuario.registroGeral.label" default="Registro Geral" /></span>
+					
+						<span class="property-value" aria-labelledby="registroGeral-label"><g:link controller="registroGeral" action="show" id="${usuarioInstance?.registroGeral?.id}">${usuarioInstance?.registroGeral?.encodeAsHTML()}</g:link></span>
+					
+				</li>
+				</g:if>
+			
 			</ol>
 			<g:form url="[resource:usuarioInstance, action:'delete']" method="DELETE">
 				<fieldset class="buttons">

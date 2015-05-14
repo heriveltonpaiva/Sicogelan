@@ -36,7 +36,6 @@ class ProdutoController {
             respond produtoInstance.errors, view:'create'
             return
         }
-
         produtoInstance.save flush:true
 
         request.withFormat {

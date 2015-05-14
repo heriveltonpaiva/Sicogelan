@@ -49,8 +49,10 @@
 						<td>${fieldValue(bean: opcaoCardapioInstance, field: "observacao")}</td>
 					
 						<td>${fieldValue(bean: opcaoCardapioInstance, field: "cardapio")}</td>
-					
-						<td>${fieldValue(bean: opcaoCardapioInstance, field: "arquivo")}</td>
+
+                        <td>
+                            <img style="width: 200px; height: 200px" src="${createLink(controller:'arquivo', action:'showImagem', id:"${opcaoCardapioInstance.id}")}" width='300' />
+                        </td>
 					
 						<td>${fieldValue(bean: opcaoCardapioInstance, field: "categoriaOpcaoCardapio")}</td>
 					

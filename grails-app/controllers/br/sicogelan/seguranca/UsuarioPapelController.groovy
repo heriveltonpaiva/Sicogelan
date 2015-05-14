@@ -1,13 +1,12 @@
 package br.sicogelan.seguranca
 
-
+import org.springframework.security.access.annotation.Secured
 
 import static org.springframework.http.HttpStatus.*
-import org.springframework.security.access.annotation.Secured
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
-@Secured('permitAll')
+@Secured(['permitAll'])
 class UsuarioPapelController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]

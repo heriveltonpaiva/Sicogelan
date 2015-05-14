@@ -1,6 +1,7 @@
 package br.sicogelan.caixa
 
-
+import br.sicogelan.comum.Arquivo
+import br.sicogelan.comum.ArquivoController
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -31,13 +32,15 @@ class CardapioController {
             return
         }
 
+        ArquivoController arq = new ArquivoController();
+        arq.save();
+
         if (cardapioInstance.hasErrors()) {
             respond cardapioInstance.errors, view:'create'
             return
         }
 
         cardapioInstance.save flush:true
-
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'cardapio.label', default: 'Cardapio'), cardapioInstance.id])
@@ -64,7 +67,6 @@ class CardapioController {
         }
 
         cardapioInstance.save flush:true
-
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'Cardapio.label', default: 'Cardapio'), cardapioInstance.id])

@@ -44,9 +44,10 @@
 				<g:if test="${arquivoInstance?.arquivo}">
 				<li class="fieldcontain">
 					<span id="arquivo-label" class="property-label"><g:message code="arquivo.arquivo.label" default="Arquivo" /></span>
-					
+
 				</li>
-				</g:if>
+
+                </g:if>
 			
 			</ol>
 			<g:form url="[resource:arquivoInstance, action:'delete']" method="DELETE">

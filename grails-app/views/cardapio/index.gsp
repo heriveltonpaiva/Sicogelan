@@ -35,8 +35,10 @@
 					<tr class="${(i % 2) == 0 ? 'even' : 'odd'}">
 					
 						<td><g:link action="show" id="${cardapioInstance.id}">${fieldValue(bean: cardapioInstance, field: "descricao")}</g:link></td>
-					
-						<td>${fieldValue(bean: cardapioInstance, field: "arquivo")}</td>
+
+                        <td>
+                            <img style="width: 200px; height: 200px" src="${createLink(controller:'arquivo', action:'showImagem', id:"${cardapioInstance.id}")}" width='300' />
+                        </td>
 					
 					</tr>
 				</g:each>

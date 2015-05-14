@@ -27,7 +27,7 @@
 			</g:hasErrors>
 			<g:form url="[resource:cardapioInstance, action:'save']" >
 				<fieldset class="form">
-					<g:render template="form"/>
+					<g:render template="form" enctype="multipart/form-data"/>
 				</fieldset>
 				<fieldset class="buttons">
 					<g:submitButton name="create" class="save" value="${message(code: 'default.button.create.label', default: 'Create')}" />

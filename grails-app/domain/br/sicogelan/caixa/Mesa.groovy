@@ -7,6 +7,7 @@ class Mesa {
     String status
     //QR Code
     String codigo;
+    Date dateCreated
 
 
     static constraints = {

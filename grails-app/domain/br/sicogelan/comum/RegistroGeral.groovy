@@ -1,18 +1,20 @@
 package br.sicogelan.comum
 
 import br.sicogelan.seguranca.Usuario
-
+import br.sicogelan.caixa.Compra
+import br.sicogelan.caixa.Pedido
 class RegistroGeral {
 
-    Date dateCreated
     String permissao
     String ip
-    Usuario usuario
+    Date dateCreated
+    Date lastUpdated
+
+    static hasOne = [compra:Compra, pedido:Pedido]
 
     static constraints = {
 
         permissao()
         ip()
-        usuario()
     }
 }

@@ -1,10 +1,15 @@
 package br.sicogelan.comum
 
+import br.sicogelan.caixa.Cardapio
 import org.springframework.security.access.annotation.Secured
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
+/**
+ * Link do Tutorial Arquivo
+ * https://grailsinaction.wordpress.com/2013/05/28/simplest-imagefile-grails-crud-using-a-data-base-as-a-storage/
+ */
 @Transactional(readOnly = true)
 @Secured(['ROLE_ADMIN'])
 class ArquivoController {

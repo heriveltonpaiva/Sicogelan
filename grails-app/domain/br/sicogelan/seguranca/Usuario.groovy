@@ -1,5 +1,7 @@
 package br.sicogelan.seguranca
 
+import br.sicogelan.comum.RegistroGeral
+
 class Usuario {
 
 	transient springSecurityService

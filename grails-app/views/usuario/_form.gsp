@@ -1,21 +1,15 @@
 <%@ page import="br.sicogelan.seguranca.Usuario" %>
 
 
-<div class="panel panel-default">
-    <div class="panel-heading">
-        Form Element Examples
-    </div>
-    <div class="panel-body">
-        <div class="row">
-            <div class="col-md-6">
-                <h3>Basic Form Examples</h3>
 
+<div class="fieldcontain ${hasErrors(bean: usuarioInstance, field: 'username', 'error')} required">
+	<label for="username">
+		<g:message code="usuario.username.label" default="Username" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:textField name="username" required="" value="${usuarioInstance?.username}"/>
 
-                <div class="form-group">
-                    <label>Login</label>
-                    <input class="form-control" name="username" value="${usuarioInstance?.username}" />
-                    <p class="help-block">Help text here.</p>
-                </div>
+</div>
 
 <div class="fieldcontain ${hasErrors(bean: usuarioInstance, field: 'password', 'error')} required">
 	<label for="password">
@@ -60,5 +54,14 @@
 	</label>
 	<g:checkBox name="passwordExpired" value="${usuarioInstance?.passwordExpired}" />
 
-</div></div></div></div></div>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: usuarioInstance, field: 'registroGeral', 'error')} required">
+	<label for="registroGeral">
+		<g:message code="usuario.registroGeral.label" default="Registro Geral" />
+		<span class="required-indicator">*</span>
+	</label>
+	<g:select id="registroGeral" name="registroGeral.id" from="${br.sicogelan.comum.RegistroGeral.list()}" optionKey="id" required="" value="${usuarioInstance?.registroGeral?.id}" class="many-to-one"/>
+
+</div>
 
