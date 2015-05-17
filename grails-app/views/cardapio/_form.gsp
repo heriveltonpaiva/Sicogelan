@@ -11,16 +11,14 @@
 	<g:textField class="form-control" name="descricao" required="" value="${cardapioInstance?.descricao}"/>
     </div>
 </div>
-
-    <div class="fieldcontain ${hasErrors(bean: arquivoInstance, field: 'arquivo', 'error')} required">
-        <div class="form-group">
+<div class="fieldcontain ${hasErrors(bean: categoriaOpcaoCardapioInstance, field: 'arquivo', 'error')} required">
+    <div class="form-group">
         <label for="arquivo">
-            <g:message code="arquivo.arquivo.label" default="Arquivo" />
+            <g:message code="cardapio.arquivo.label" default="Arquivo" />
             <span class="required-indicator">*</span>
         </label>
-        </div>
-        <input type="file" id="arquivo" name="arquivo" />
+        <g:select id="arquivo" name="arquivo.id" from="${br.sicogelan.comum.Arquivo.list()}" optionKey="id" required="" value="${cardapioInstance?.arquivo?.id}" class="form-control"/>
     </div>
-
+</div>
 </div>
 

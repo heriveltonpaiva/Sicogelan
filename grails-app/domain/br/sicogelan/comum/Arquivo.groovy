@@ -10,6 +10,7 @@ class Arquivo {
     String contentType;
     byte[] arquivo
 
+    static hasMany = [cardapio:Cardapio]
     static constraints = {
         nome(blank:false)
         contentType()

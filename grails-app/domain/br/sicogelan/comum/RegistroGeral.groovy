@@ -9,12 +9,12 @@ class RegistroGeral {
     String ip
     Date dateCreated
     Date lastUpdated
-
-    static hasOne = [compra:Compra, pedido:Pedido]
-
+    static belongsTo = [usuario:Usuario]
+    static hasOne = [compra:Compra]
     static constraints = {
 
         permissao()
         ip()
+        usuario()
     }
 }

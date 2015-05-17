@@ -12,7 +12,7 @@ class CompraController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
+        params.max = Math.min(max ?: 5, 100)
         respond Compra.list(params), model:[compraInstanceCount: Compra.count()]
     }
 

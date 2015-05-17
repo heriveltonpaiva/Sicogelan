@@ -8,12 +8,10 @@ class Cardapio {
     Date dateCreated
     Date lastUpdated
 
-    static belongsTo = [arquivo: Arquivo]
+    static belongsTo= [arquivo: Arquivo]
 
     static constraints = {
-
         descricao(blank: false)
-        arquivo()
     }
 
 

@@ -1,6 +1,7 @@
 package br.sicogelan.caixa
 
 import br.sicogelan.comum.Arquivo
+import com.lowagie.text.pdf.AcroFields
 
 class OpcaoCardapio {
 
@@ -11,12 +12,7 @@ class OpcaoCardapio {
     Date lastUpdated
 
     static belongsTo = [cardapio: Cardapio, categoriaOpcaoCardapio: CategoriaOpcaoCardapio, arquivo: Arquivo]
-
-    //NÃO QUERO QUE FIQUE AUQI
-    static hasMany = [
-                      opcaoIngrediente:OpcaoIngrediente,
-                     ]
-    static hasOne = [itemPedido:ItemPedido,  opcaoUnidadeMedida:OpcaoUnidadeMedida]
+    static hasMany = [opcaoIngrediente:OpcaoIngrediente, itemPedido:ItemPedido]
 
 
     static constraints = {

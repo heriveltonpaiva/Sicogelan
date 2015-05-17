@@ -9,9 +9,8 @@ class OpcaoUnidadeMedida {
     Date dateCreated
     Date lastUpdated
 
-    static hasOne = [itemPedido:ItemPedido]
     static belongsTo = [opcaoCardapio:OpcaoCardapio]
-
+    static hasMany = [itemPedido:ItemPedido]
 
     static constraints = {
         descricao()

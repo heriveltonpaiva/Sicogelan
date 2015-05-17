@@ -11,7 +11,7 @@ class Compra {
     Date dateCreated
     Date lastUpdated
 
-    static belongsTo= [produto:Produto, registroGeral:RegistroGeral]
+    static belongsTo = [produto:Produto, registroGeral:RegistroGeral]
     static constraints = {
 
         produto()

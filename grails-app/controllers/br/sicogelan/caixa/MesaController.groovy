@@ -12,7 +12,7 @@ class MesaController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
+        params.max = Math.min(max ?: 5, 100)
         respond Mesa.list(params), model:[mesaInstanceCount: Mesa.count()]
     }
 
@@ -42,14 +42,14 @@ class MesaController {
             form multipartForm {
                 flash.message = 'Cadastro Realizado com Sucesso.'
                 // Exibir a mensagem de cadastro e continuar na memsa página
-                redirect action:"create"
+                redirect action:"index"
             }
             '*' { render  status: CREATED}
         }
     }
 
     def edit(Mesa mesaInstance) {
-        respond mesaInstance
+        respond(mesaInstance)
     }
 
     @Transactional
@@ -68,10 +68,10 @@ class MesaController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Mesa.label', default: 'Mesa'), mesaInstance.id])
-                redirect mesaInstance
+                flash.message = 'Registro Alterado com Sucesso.'
+                redirect action:"index"
             }
-            '*'{ respond mesaInstance, [status: OK] }
+            '*'{ render  status: OK}
         }
     }
 
@@ -87,10 +87,10 @@ class MesaController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Mesa.label', default: 'Mesa'), mesaInstance.id])
-                redirect action:"index", method:"GET"
+                flash.message = 'Registro Removido com Sucesso.'
+                redirect action:"index"
             }
-            '*'{ render status: NO_CONTENT }
+            '*'{  render mesaInstance, [status: OK] }
         }
     }
 

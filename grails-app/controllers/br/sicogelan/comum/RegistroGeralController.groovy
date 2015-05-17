@@ -13,7 +13,7 @@ class RegistroGeralController {
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
+        params.max = Math.min(max ?: 5, 100)
         respond RegistroGeral.list(params), model:[registroGeralInstanceCount: RegistroGeral.count()]
     }
 
@@ -36,7 +36,6 @@ class RegistroGeralController {
             respond registroGeralInstance.errors, view:'create'
             return
         }
-
         registroGeralInstance.save flush:true
 
         request.withFormat {

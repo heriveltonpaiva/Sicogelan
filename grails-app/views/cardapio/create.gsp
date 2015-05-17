@@ -41,12 +41,13 @@
                                     <!-- Form Elements -->
                                     <div class="panel-body">
                                         <div class="row">
+                                            <fieldset class="form">
+                                                <g:render template="form"/>
+                                            </fieldset>
                                             <div class="col-md-6">
                                             <!-- #################### FIM INICIO DIV ADICIONADO 2 ########################### -->
                                                 <g:form url="[resource:cardapioInstance, action:'save']"  enctype="multipart/form-data" > <!-- ALTER ENTIDADE-->
-                                                    <fieldset class="form">
-                                                        <g:render template="form"/>
-                                                    </fieldset>
+
                                                     <div class="panel-heading">
                                                         <fieldset class="buttons">
                                                             <g:submitButton  name="create" class="btn btn-primary" value="Salvar Registro" />

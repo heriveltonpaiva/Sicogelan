@@ -32,8 +32,6 @@ class CardapioController {
             return
         }
 
-        ArquivoController arq = new ArquivoController();
-        arq.save();
 
         if (cardapioInstance.hasErrors()) {
             respond cardapioInstance.errors, view:'create'
