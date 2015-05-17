@@ -3,29 +3,32 @@
 
 
 <div class="fieldcontain ${hasErrors(bean: itemPedidoInstance, field: 'quantidade', 'error')} required">
+<div class="form-group">
 	<label for="quantidade">
 		<g:message code="itemPedido.quantidade.label" default="Quantidade" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:field name="quantidade" type="number" value="${itemPedidoInstance.quantidade}" required=""/>
-
+	<g:field name="quantidade" class="form-control" type="number" value="${itemPedidoInstance.quantidade}" required=""/>
+</div>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: itemPedidoInstance, field: 'opcaoCardapio', 'error')} required">
+<div class="form-group">
 	<label for="opcaoCardapio">
 		<g:message code="itemPedido.opcaoCardapio.label" default="Opcao Cardapio" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="opcaoCardapio" name="opcaoCardapio.id" from="${br.sicogelan.caixa.OpcaoCardapio.list()}" optionKey="id" required="" value="${itemPedidoInstance?.opcaoCardapio?.id}" class="many-to-one"/>
-
+	<g:select id="opcaoCardapio" name="opcaoCardapio.id" from="${br.sicogelan.caixa.OpcaoCardapio.list()}" optionKey="id" required="" value="${itemPedidoInstance?.opcaoCardapio?.id}" class="form-control"/>
+</div>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: itemPedidoInstance, field: 'opcaoUnidadeMedida', 'error')} required">
+<div class="form-group">
 	<label for="opcaoUnidadeMedida">
 		<g:message code="itemPedido.opcaoUnidadeMedida.label" default="Opcao Unidade Medida" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:select id="opcaoUnidadeMedida" name="opcaoUnidadeMedida.id" from="${br.sicogelan.caixa.OpcaoUnidadeMedida.list()}" optionKey="id" required="" value="${itemPedidoInstance?.opcaoUnidadeMedida?.id}" class="many-to-one"/>
-
+	<g:select id="opcaoUnidadeMedida" name="opcaoUnidadeMedida.id" from="${br.sicogelan.caixa.OpcaoUnidadeMedida.list()}" optionKey="id" required="" value="${itemPedidoInstance?.opcaoUnidadeMedida?.id}" class="form-control"/>
+</div>
 </div>
 

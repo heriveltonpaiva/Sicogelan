@@ -43,6 +43,58 @@ font-size: 16px;"> Ultimo Acesso : 10 de Maio 2015 &nbsp; <a href="${createLink(
                     <li>
                         <a class="active-menu"  href=${createLink(uri: '')}><i class="fa fa-dashboard fa-3x"></i> Painel Principal</a>
                     </li>
+
+                    <li  >
+                        <a  href="${createLink(uri: '/mesa/index.gsp')}"><i class="fa fa-table fa-3x"></i> Cadastros <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="${createLink(uri: '/pedido/index.gsp')}">Cadastrar Pedido</a>
+                            </li>
+                            <li>
+                                <a href="${createLink(uri: '/itemPedido/index.gsp')}">Cadastrar ItemPedido</a>
+                            </li>
+                            <li>
+                                <a href="${createLink(uri: '/opcaoCardapio/index.gsp')}">Cadastrar Opção Cardápio</a>
+                            </li>
+                            <li>
+                                <a href="${createLink(uri: '/categoriaOpcaoCardapio/index.gsp')}">Cadastrar Categoria Opção Cardapio</a>
+                            </li>
+                            <li>
+                                <a href="${createLink(uri: '/opcaoUnidadeMedida/index.gsp')}">Cadastrar Opção Unidade Medida</a>
+                            </li>
+                            <li>
+                                <a href="${createLink(uri: '/cardapio/index.gsp')}">Cadastrar Cardápio</a>
+                            </li>
+
+                            <li>
+                                <a href="${createLink(uri: '/arquivo/create.gsp')}">Cadastrar Arquivo</a>
+                            </li>
+                            <li>
+                                <a href="${createLink(uri: '/mesa/index.gsp')}">Cadastrar Mesa</a>
+                            </li>
+                            <li>
+                                <a href="${createLink(uri: '/opcaoIngrediente/index.gsp')}">Cadastrar Opcão Ingrediente</a>
+                            </li>
+                            <li>
+                                <a href="${createLink(uri: '/compra/index.gsp')}">Cadastrar Compras</a>
+                            </li>
+                            <li>
+                                <a href="${createLink(uri: '/produto/index.gsp')}">Cadastrar Produto</a>
+                            </li>
+                            <li>
+                                <a  href="${createLink(uri: '/usuario/index.gsp')}"> Cadastrar Usuarios</a>
+                            </li>
+                            <li>
+                                <a  href="${createLink(uri: '/papel/index.gsp')}"> Cadastrar Papel</a>
+                            </li>
+                            <li>
+                                <a  href="${createLink(uri: '/usuarioPapel/index.gsp')}"> Cadastrar usuário Papel</a>
+                            </li>
+                            <li>
+                                <a  href="${createLink(uri: '/registroGeral/index.gsp')}"> Cadastrar Registro Geral</a>
+                            </li>
+                        </ul>
+                    </li>
                     <li>
                         <a  href="${createLink(uri: '/cardapio/index.gsp')}"><i class="fa fa-desktop fa-3x"></i> Cardápio</a>
                     </li>
@@ -51,29 +103,6 @@ font-size: 16px;"> Ultimo Acesso : 10 de Maio 2015 &nbsp; <a href="${createLink(
                     </li>
                     <li  >
                         <a  href="${createLink(uri: '/usuario/index.gsp')}"><i class="fa fa-bar-chart-o fa-3x"></i> Usuarios</a>
-                    </li>
-                    <li  >
-                        <a  href="${createLink(uri: '/mesa/index.gsp')}"><i class="fa fa-table fa-3x"></i> Cadastros <span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="${createLink(uri: '/mesa/index.gsp')}">Cadastrar Mesa</a>
-                            </li>
-                            <li>
-                                <a href="${createLink(uri: '/cardapio/index.gsp')}">Cadastrar Cardápio</a>
-                            </li>
-                            <li>
-                                <a href="${createLink(uri: '/opcaoCardapio/index.gsp')}">Cadastrar Opção Cardápio</a>
-                            </li>
-                            <li>
-                                <a href="${createLink(uri: '/arquivo/index.gsp')}">Cadastrar Arquivo</a>
-                            </li>
-                            <li>
-                                <a href="${createLink(uri: '/produto/index.gsp')}">Cadastrar Produto</a>
-                            </li>
-                            <li>
-                                <a href="${createLink(uri: '/opcaoUnidadeMedida/index.gsp')}">Cadastrar Opção Unidade Medida</a>
-                            </li>
-                        </ul>
                     </li>
                     <li  >
                         <a  href="form.html"><i class="fa fa-edit fa-3x"></i> Ajuda <span class="fa arrow"></span></a>
