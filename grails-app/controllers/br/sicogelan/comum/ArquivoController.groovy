@@ -16,17 +16,24 @@ class ArquivoController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
+     def indexTab = 0
+
     def index(Integer max) {
-        params.max = Math.min(max ?: 10, 100)
-        respond Arquivo.list(params), model:[arquivoInstanceCount: Arquivo.count()]
+        def indexTab = 1
+        params.max = Math.min(max ?: 5, 100)
+
+        respond(Arquivo.list(params), model:[arquivoInstanceCount: Arquivo.count()])
     }
 
     def show(Arquivo arquivoInstance) {
-        respond arquivoInstance
+        def indexTab = 1
+        new Arquivo(params)
+        redirect action: "create"
     }
 
-    def create() {
-        respond new Arquivo(params)
+    def create(Integer max) {
+        indexTab = 0
+
     }
     def showImagem() {
         def fileInstance = Arquivo.get(params.id)
@@ -47,18 +54,22 @@ class ArquivoController {
         }
 
         arquivoInstance.save flush:true
-
+        indexTab=1
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'arquivo.label', default: 'Arquivo'), arquivoInstance.id])
-                redirect arquivoInstance
+                flash.message = 'Cadastro Realizado com Sucesso.'
+                //ADICIONAR ESSA LINHA
+                redirect action:"create"
             }
-            '*' { respond arquivoInstance, [status: CREATED] }
+            //RETORNAR PARA PRÓPRIA TELA
+            //ADICIONAR ESSA NO SCAFFOLD
+            '*' { render  status: CREATED}
         }
     }
 
     def edit(Arquivo arquivoInstance) {
-        respond arquivoInstance
+        indexTab=0
+        respond(arquivoInstance, view: 'create')
     }
 
     @Transactional
@@ -74,13 +85,13 @@ class ArquivoController {
         }
 
         arquivoInstance.save flush:true
-
+        indexTab=1
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.updated.message', args: [message(code: 'Arquivo.label', default: 'Arquivo'), arquivoInstance.id])
-                redirect arquivoInstance
+                flash.message = 'Registro Alterado com Sucesso.'
+                redirect action:"create"
             }
-            '*'{ respond arquivoInstance, [status: OK] }
+            '*'{ render  status: OK}
         }
     }
 
@@ -93,13 +104,13 @@ class ArquivoController {
         }
 
         arquivoInstance.delete flush:true
-
+        indexTab=1
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.deleted.message', args: [message(code: 'Arquivo.label', default: 'Arquivo'), arquivoInstance.id])
-                redirect action:"index", method:"GET"
+                flash.message = 'Registro Removido com Sucesso.'
+                redirect action:"create"
             }
-            '*'{ render status: NO_CONTENT }
+            '*'{  render arquivoInstance, [status: OK] }
         }
     }
 
@@ -107,9 +118,9 @@ class ArquivoController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.not.found.message', args: [message(code: 'arquivo.label', default: 'Arquivo'), params.id])
-                redirect action: "index", method: "GET"
+                redirect action:"create"
             }
-            '*'{ render status: NOT_FOUND }
+            '*'{  respond arquivoInstance, [status: NOT_FOUND]}
         }
     }
 }
