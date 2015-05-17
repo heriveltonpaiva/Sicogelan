@@ -12,7 +12,6 @@
     </div>
 </div>
 
-
     <div class="fieldcontain ${hasErrors(bean: arquivoInstance, field: 'arquivo', 'error')} required">
         <div class="form-group">
         <label for="arquivo">

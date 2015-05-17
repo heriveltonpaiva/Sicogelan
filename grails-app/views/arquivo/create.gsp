@@ -39,14 +39,11 @@
                 </ul>
                 <div class="tab-content">
 
-                    <div class="tab-pane fade active in" id="formulario" >
-
-
-                        <div id="create-arquivo" class="content scaffold-create" role="main">
-                        <!-- /. NAV SIDE  -->
-
-                            <div class="row">
-                                <div class="col-md-12">
+                        <div class="tab-pane fade active in" id="formulario" >
+                            <div id="create-arquivo" class="content scaffold-create" role="main">
+                                <!-- /. NAV SIDE  -->
+                                <div class="row">
+                                    <div class="col-md-12">
                                     <!-- Form Elements -->
                                         <div class="panel-body">
                                             <div class="row">
@@ -65,12 +62,10 @@
                                                 </div>
                                             </div>
                                         </div>
-                                     </div>
+                                    </div>
                                 </div>
-
+                            </div>
                         </div>
-
-                    </div>
 
                     <div class="tab-pane fade" id="listagem"   >
 

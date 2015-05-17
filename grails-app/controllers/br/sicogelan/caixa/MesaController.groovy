@@ -40,10 +40,11 @@ class MesaController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'mesa.label', default: 'Mesa'), mesaInstance.id])
-                redirect mesaInstance
+                flash.message = 'Cadastro Realizado com Sucesso.'
+                // Exibir a mensagem de cadastro e continuar na memsa página
+                redirect action:"create"
             }
-            '*' { respond mesaInstance, [status: CREATED] }
+            '*' { render  status: CREATED}
         }
     }
 

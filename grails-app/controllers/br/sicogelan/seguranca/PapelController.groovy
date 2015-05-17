@@ -1,11 +1,12 @@
 package br.sicogelan.seguranca
 
-
+import org.springframework.security.access.annotation.Secured
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
+@Secured(['ROLE_ADMIN'])
 class PapelController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
@@ -39,10 +40,11 @@ class PapelController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'papel.label', default: 'Papel'), papelInstance.id])
-                redirect papelInstance
+                flash.message = 'Cadastro Realizado com Sucesso.'
+                // Exibir a mensagem de cadastro e continuar na memsa página
+                redirect action:"create"
             }
-            '*' { respond papelInstance, [status: CREATED] }
+            '*' { render  status: CREATED}
         }
     }
 

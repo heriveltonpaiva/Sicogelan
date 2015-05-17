@@ -20,4 +20,7 @@ class OpcaoUnidadeMedida {
         quantidadeReal()
         opcaoCardapio()
     }
+    String toString(){
+        return descricao
+    }
 }

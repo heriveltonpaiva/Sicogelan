@@ -41,12 +41,14 @@ class CardapioController {
         }
 
         cardapioInstance.save flush:true
+
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'cardapio.label', default: 'Cardapio'), cardapioInstance.id])
-                redirect cardapioInstance
+                flash.message = 'Cadastro Realizado com Sucesso.'
+            // Exibir a mensagem de cadastro e continuar na memsa página
+                redirect action:"create"
             }
-            '*' { respond cardapioInstance, [status: CREATED] }
+            '*' { render  status: CREATED}
         }
     }
 

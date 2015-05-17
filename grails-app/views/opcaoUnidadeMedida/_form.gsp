@@ -8,7 +8,7 @@
 		<g:message code="opcaoUnidadeMedida.descricao.label" default="Descricao" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:textField class="form-control" cname="descricao" required="" value="${opcaoUnidadeMedidaInstance?.descricao}"/>
+	<g:textField class="form-control" name="descricao" required="" value="${opcaoUnidadeMedidaInstance?.descricao}"/>
 </div>
 </div>
 

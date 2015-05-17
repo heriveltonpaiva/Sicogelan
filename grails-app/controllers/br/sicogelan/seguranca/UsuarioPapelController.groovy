@@ -40,10 +40,11 @@ class UsuarioPapelController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'usuarioPapel.label', default: 'UsuarioPapel'), usuarioPapelInstance.id])
-                redirect usuarioPapelInstance
+                flash.message = 'Cadastro Realizado com Sucesso.'
+                // Exibir a mensagem de cadastro e continuar na memsa página
+                redirect action:"create"
             }
-            '*' { respond usuarioPapelInstance, [status: CREATED] }
+            '*' { render  status: CREATED}
         }
     }
 

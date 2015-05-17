@@ -15,4 +15,7 @@ class CategoriaOpcaoCardapio {
         descricao()
         arquivo()
     }
+    String toString(){
+        return descricao
+    }
 }

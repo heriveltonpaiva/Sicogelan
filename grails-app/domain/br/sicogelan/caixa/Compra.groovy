@@ -20,4 +20,5 @@ class Compra {
         observacao()
         registroGeral()
     }
+
 }

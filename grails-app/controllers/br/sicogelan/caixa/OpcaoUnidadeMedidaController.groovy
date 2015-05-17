@@ -40,10 +40,11 @@ class OpcaoUnidadeMedidaController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'opcaoUnidadeMedida.label', default: 'OpcaoUnidadeMedida'), opcaoUnidadeMedidaInstance.id])
-                redirect opcaoUnidadeMedidaInstance
+                flash.message = 'Cadastro Realizado com Sucesso.'
+                // Exibir a mensagem de cadastro e continuar na memsa página
+                redirect action:"create"
             }
-            '*' { respond opcaoUnidadeMedidaInstance, [status: CREATED] }
+            '*' { render  status: CREATED}
         }
     }
 

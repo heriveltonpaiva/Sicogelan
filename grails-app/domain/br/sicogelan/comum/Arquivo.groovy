@@ -14,7 +14,9 @@ class Arquivo {
         nome(blank:false)
         contentType()
         arquivo()
+    }
 
-
+    String toString(){
+        return nome
     }
 }

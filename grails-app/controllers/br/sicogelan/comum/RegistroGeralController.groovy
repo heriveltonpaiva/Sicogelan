@@ -41,10 +41,11 @@ class RegistroGeralController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'registroGeral.label', default: 'RegistroGeral'), registroGeralInstance.id])
-                redirect registroGeralInstance
+                flash.message = 'Cadastro Realizado com Sucesso.'
+                // Exibir a mensagem de cadastro e continuar na memsa página
+                redirect action:"create"
             }
-            '*' { respond registroGeralInstance, [status: CREATED] }
+            '*' { render  status: CREATED}
         }
     }
 

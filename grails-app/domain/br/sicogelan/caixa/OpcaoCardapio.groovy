@@ -29,4 +29,7 @@ class OpcaoCardapio {
         categoriaOpcaoCardapio()
 
     }
+    String toString(){
+        return descricao
+    }
 }

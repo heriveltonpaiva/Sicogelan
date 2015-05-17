@@ -19,4 +19,7 @@ class Pedido {
         mesa()
         registroGeral()
     }
+    String toString(){
+        return status +" - "+statusConsumo
+    }
 }

@@ -40,10 +40,11 @@ class OpcaoCardapioController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'opcaoCardapio.label', default: 'OpcaoCardapio'), opcaoCardapioInstance.id])
-                redirect opcaoCardapioInstance
+                flash.message = 'Cadastro Realizado com Sucesso.'
+                // Exibir a mensagem de cadastro e continuar na memsa página
+                redirect action:"create"
             }
-            '*' { respond opcaoCardapioInstance, [status: CREATED] }
+            '*' { render  status: CREATED}
         }
     }
 

@@ -40,10 +40,11 @@ class CompraController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'compra.label', default: 'Compra'), compraInstance.id])
-                redirect compraInstance
+                flash.message = 'Cadastro Realizado com Sucesso.'
+                // Exibir a mensagem de cadastro e continuar na memsa página
+                redirect action:"create"
             }
-            '*' { respond compraInstance, [status: CREATED] }
+            '*' { render  status: CREATED}
         }
     }
 

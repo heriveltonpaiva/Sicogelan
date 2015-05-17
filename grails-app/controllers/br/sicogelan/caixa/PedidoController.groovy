@@ -40,10 +40,11 @@ class PedidoController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'pedido.label', default: 'Pedido'), pedidoInstance.id])
-                redirect pedidoInstance
+                flash.message = 'Cadastro Realizado com Sucesso.'
+                // Exibir a mensagem de cadastro e continuar na memsa página
+                redirect action:"create"
             }
-            '*' { respond pedidoInstance, [status: CREATED] }
+            '*' { render  status: CREATED}
         }
     }
 

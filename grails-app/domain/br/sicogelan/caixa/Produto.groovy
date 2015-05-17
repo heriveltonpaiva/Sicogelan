@@ -19,4 +19,7 @@ class Produto {
         quantidadeMinima()
         quantidadeMinimaReal()
     }
+    String toString(){
+        return descricao
+    }
 }

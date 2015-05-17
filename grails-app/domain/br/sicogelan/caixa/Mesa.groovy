@@ -15,6 +15,8 @@ class Mesa {
         descricao()
         status()
         codigo()
-
+    }
+    String toString(){
+        return descricao+" - "+status
     }
 }

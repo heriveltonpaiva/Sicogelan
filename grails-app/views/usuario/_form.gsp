@@ -62,13 +62,5 @@
 </div>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: usuarioInstance, field: 'registroGeral', 'error')} required">
-<div class="form-group">
-	<label for="registroGeral">
-		<g:message code="usuario.registroGeral.label" default="Registro Geral" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="registroGeral" name="registroGeral.id" from="${br.sicogelan.comum.RegistroGeral.list()}" optionKey="id" required="" value="${usuarioInstance?.registroGeral?.id}" class="form-control"/>
-</div>
-</div>
+
 

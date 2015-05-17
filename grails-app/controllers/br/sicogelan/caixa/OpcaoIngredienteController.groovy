@@ -40,10 +40,11 @@ class OpcaoIngredienteController {
 
         request.withFormat {
             form multipartForm {
-                flash.message = message(code: 'default.created.message', args: [message(code: 'opcaoIngrediente.label', default: 'OpcaoIngrediente'), opcaoIngredienteInstance.id])
-                redirect opcaoIngredienteInstance
+                flash.message = 'Cadastro Realizado com Sucesso.'
+                // Exibir a mensagem de cadastro e continuar na memsa página
+                redirect action:"create"
             }
-            '*' { respond opcaoIngredienteInstance, [status: CREATED] }
+            '*' { render  status: CREATED}
         }
     }
 
