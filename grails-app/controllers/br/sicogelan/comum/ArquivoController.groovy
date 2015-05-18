@@ -1,6 +1,7 @@
 package br.sicogelan.comum
 
 import br.sicogelan.caixa.Cardapio
+import grails.converters.JSON
 import org.springframework.security.access.annotation.Secured
 
 import static org.springframework.http.HttpStatus.*
@@ -123,4 +124,12 @@ class ArquivoController {
             '*'{  respond arquivoInstance, [status: NOT_FOUND]}
         }
     }
+    /**  Lista de Arquivos Json **/
+
+    def listJson(Integer max){
+        params.max = Math.min(max ?: 20, 100)
+        render Arquivo.list(params) as JSON
+    }
+
+
 }
