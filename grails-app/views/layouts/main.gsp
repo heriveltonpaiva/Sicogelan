@@ -31,7 +31,17 @@
   <div style="color: white;
 padding: 15px 50px 5px 50px;
 float: right;
-font-size: 16px;"> Ultimo Acesso : 10 de Maio 2015 &nbsp; <a href="${createLink(uri: '/login.gsp')}" class="btn btn-danger square-btn-adjust">Logout</a> </div>
+font-size: 16px;"> <sec:ifLoggedIn>Bem vindo <sec:username/></sec:ifLoggedIn>
+  <sec:ifNotLoggedIn>
+      <g:link controller='login' action='auth'>Login</g:link>
+  </sec:ifNotLoggedIn>
+      <span id='loginLink' style='position: relative; margin-right: 30px; float: right'>
+          <sec:ifLoggedIn>
+              (<g:link href="/j_spring_security_logout">Logout</g:link>)
+          </sec:ifLoggedIn>
+
+      </span>
+  </div>
         </nav>   
            <!-- /. NAV TOP  -->
                 <nav class="navbar-default navbar-side" role="navigation">
@@ -56,16 +66,16 @@ font-size: 16px;"> Ultimo Acesso : 10 de Maio 2015 &nbsp; <a href="${createLink(
                             <li>
                                 <a href="${createLink(uri: '/opcaoCardapio/index.gsp')}">Cadastrar Opção Cardápio</a>
                             </li>
-                            <li>
-                                <a href="${createLink(uri: '/categoriaOpcaoCardapio/index.gsp')}">Cadastrar Categoria Opção Cardapio</a>
-                            </li>
+
                             <li>
                                 <a href="${createLink(uri: '/opcaoUnidadeMedida/index.gsp')}">Cadastrar Opção Unidade Medida</a>
                             </li>
                             <li>
+                                <a href="${createLink(uri: '/categoriaOpcaoCardapio/index.gsp')}">Cadastrar Categoria Opção Cardapio</a>
+                            </li>
+                            <li>
                                 <a href="${createLink(uri: '/cardapio/index.gsp')}">Cadastrar Cardápio</a>
                             </li>
-
                             <li>
                                 <a href="${createLink(uri: '/arquivo/create.gsp')}">Cadastrar Arquivo</a>
                             </li>
@@ -81,6 +91,18 @@ font-size: 16px;"> Ultimo Acesso : 10 de Maio 2015 &nbsp; <a href="${createLink(
                             <li>
                                 <a href="${createLink(uri: '/produto/index.gsp')}">Cadastrar Produto</a>
                             </li>
+                        </ul>
+                    </li>
+
+                    <li>
+                        <a  href="${createLink(uri: '/pedido/index.gsp')}"><i class="fa fa-qrcode fa-3x"></i> Pedidos</a>
+                    </li>
+                    <li  >
+                        <a  href="${createLink(uri: '/opcaoCardapio/index.gsp')}"><i class="fa fa-bar-chart-o fa-3x"></i> Opções Cardápio</a>
+                    </li>
+                    <li  >
+                        <a  href="form.html"><i class="fa fa-edit fa-3x"></i> Painel Administrativo <span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
                             <li>
                                 <a  href="${createLink(uri: '/usuario/index.gsp')}"> Cadastrar Usuarios</a>
                             </li>
@@ -98,24 +120,6 @@ font-size: 16px;"> Ultimo Acesso : 10 de Maio 2015 &nbsp; <a href="${createLink(
                     <li>
                         <a  href="${createLink(uri: '/cardapio/index.gsp')}"><i class="fa fa-desktop fa-3x"></i> Cardápio</a>
                     </li>
-                    <li>
-                        <a  href="${createLink(uri: '/pedido/index.gsp')}"><i class="fa fa-qrcode fa-3x"></i> Pedidos</a>
-                    </li>
-                    <li  >
-                        <a  href="${createLink(uri: '/usuario/index.gsp')}"><i class="fa fa-bar-chart-o fa-3x"></i> Usuarios</a>
-                    </li>
-                    <li  >
-                        <a  href="form.html"><i class="fa fa-edit fa-3x"></i> Ajuda <span class="fa arrow"></span></a>
-                        <ul class="nav nav-second-level">
-                            <li>
-                                <a href="#">Em Desenvolvimento</a>
-                            </li>
-                            <li>
-                                <a href="#">Em Desenvolvimento</a>
-                            </li>
-                        </ul>
-                    </li>
-
                 </ul>
                
             </div>

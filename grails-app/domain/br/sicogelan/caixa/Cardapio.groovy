@@ -13,6 +13,9 @@ class Cardapio {
     static constraints = {
         descricao(blank: false)
     }
+    String toString(){
+        return descricao
+    }
 
 
 }

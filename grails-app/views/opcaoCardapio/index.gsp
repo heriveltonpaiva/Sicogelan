@@ -38,7 +38,7 @@
 
                                     <!-- #################### FIM ADICIONADO DIV 1 ############################## -->
 					<tr>
-					
+                         <th><g:message code="opcaoCardapio.arquivo.label" default="Foto da Opção Cardápio" /></th>
 						<g:sortableColumn property="descricao" title="${message(code: 'opcaoCardapio.descricao.label', default: 'Descricao')}" />
 					
 						<g:sortableColumn property="preco" title="${message(code: 'opcaoCardapio.preco.label', default: 'Preco')}" />
@@ -46,17 +46,21 @@
 						<g:sortableColumn property="observacao" title="${message(code: 'opcaoCardapio.observacao.label', default: 'Observacao')}" />
 					
 						<th><g:message code="opcaoCardapio.cardapio.label" default="Cardapio" /></th>
-					
-						<th><g:message code="opcaoCardapio.arquivo.label" default="Arquivo" /></th>
-					
+                                    <th><g:message code="opcaoCardapio.arquivo.label" default="Foto do Cardápio" /></th>
 						<th><g:message code="opcaoCardapio.categoriaOpcaoCardapio.label" default="Categoria Opcao Cardapio" /></th>
+
+                                    <th><g:message code="opcaoCardapio.arquivo.label" default="Foto da Categoria" /></th>
+
+                                    <th><g:message code="opcaoCardapio.opcaoIngrediente.label" default="Ingredientes" /></th>
                          <td></td>  <!-- TAG ADICIONADA -->
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${opcaoCardapioInstanceList}" status="i" var="opcaoCardapioInstance">
                     <tr class="gradeA">  <!--TAG ADICIONADA -->
-					
+                        <td>
+                            <img style="width: 200px; height: 200px" src="${createLink(controller:'arquivo', action:'showImagem', id:"${opcaoCardapioInstance.arquivo.id}")}" width='300' />
+                        </td>
 						<td><g:link action="show" id="${opcaoCardapioInstance.id}">${fieldValue(bean: opcaoCardapioInstance, field: "descricao")}</g:link></td>
 					
 						<td>${fieldValue(bean: opcaoCardapioInstance, field: "preco")}</td>
@@ -64,12 +68,14 @@
 						<td>${fieldValue(bean: opcaoCardapioInstance, field: "observacao")}</td>
 					
 						<td>${fieldValue(bean: opcaoCardapioInstance, field: "cardapio")}</td>
-
+                        <td>
+                            <img style="width: 200px; height: 200px" src="${createLink(controller:'arquivo', action:'showImagem', id:"${opcaoCardapioInstance.cardapio.arquivo.id}")}" width='300' />
+                        </td>
                         <td>${fieldValue(bean: opcaoCardapioInstance, field: "categoriaOpcaoCardapio")}</td>
                         <td>
-                            <img style="width: 200px; height: 200px" src="${createLink(controller:'arquivo', action:'showImagem', id:"${opcaoCardapioInstance.arquivo.id}")}" width='300' />
+                            <img style="width: 200px; height: 200px" src="${createLink(controller:'arquivo', action:'showImagem', id:"${opcaoCardapioInstance.categoriaOpcaoCardapio.arquivo.id}")}" width='300' />
                         </td>
-
+                        <td>${fieldValue(bean: opcaoCardapioInstance, field: "opcaoIngrediente")}</td>
                         <!-- ADICIONADO TD EDITAR E DELETAR  --->
                         <td class="col-md-1"> <!--TAG ADICIONADA -->
                         <g:form url="[resource:opcaoCardapioInstance, action:'delete']" method="DELETE"> <!--ALTER ENTITY -->

@@ -16,4 +16,10 @@ class OpcaoIngrediente {
          opcaoCardapio()
          produto()
     }
+    String toString(){
+        if(produto == null){
+            return ""
+        }
+        return quantidade +" "+produto.descricao
+    }
 }

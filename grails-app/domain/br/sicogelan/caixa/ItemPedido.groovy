@@ -14,5 +14,10 @@ class ItemPedido {
         opcaoCardapio()
         opcaoUnidadeMedida()
     }
-
+    String toString(){
+        if(opcaoCardapio==null){
+            return "";
+        }
+        return opcaoCardapio.descricao
+    }
 }

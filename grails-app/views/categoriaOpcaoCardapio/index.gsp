@@ -50,8 +50,10 @@
                     <tr class="gradeA">  <!--TAG ADICIONADA -->
 					
 						<td><g:link action="show" id="${categoriaOpcaoCardapioInstance.id}">${fieldValue(bean: categoriaOpcaoCardapioInstance, field: "descricao")}</g:link></td>
-					
-						<td>${fieldValue(bean: categoriaOpcaoCardapioInstance, field: "arquivo")}</td>
+
+                        <td>
+                            <img style="width: 200px; height: 200px" src="${createLink(controller:'arquivo', action:'showImagem', id:"${categoriaOpcaoCardapioInstance.arquivo.id}")}" width='300' />
+                        </td>
                         <!-- ADICIONADO TD EDITAR E DELETAR  --->
                         <td class="col-md-1">
                             <g:form url="[resource:categoriaOpcaoCardapioInstance, action:'delete']" method="DELETE"> <!--ALTER ENTITY -->

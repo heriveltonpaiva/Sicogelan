@@ -40,6 +40,7 @@
 	</label>
 	<g:select id="itemPedido" name="itemPedido.id" from="${br.sicogelan.caixa.ItemPedido.list()}" optionKey="id" required="" value="${pedidoInstance?.itemPedido?.id}" class="form-control"/>
 </div>
+
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: pedidoInstance, field: 'mesa', 'error')} required">

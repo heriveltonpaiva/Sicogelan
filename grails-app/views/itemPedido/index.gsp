@@ -38,11 +38,9 @@
 
                                     <!-- #################### FIM ADICIONADO DIV 1 ############################## -->
 					<tr>
-
-						<g:sortableColumn property="quantidade" title="${message(code: 'itemPedido.quantidade.label', default: 'Quantidade')}" />
-
-						<th><g:message code="itemPedido.opcaoCardapio.label" default="Opcao Cardapio" /></th>
-
+                        <th><g:message code="opcaoCardapio.arquivo.label" default="Foto da Opção Cardápio" /></th>
+                        <th><g:message code="opcaoUnidadeMedida.opcaoCardapio.label" default="Opcao Cardapio" /></th>
+                        <g:sortableColumn property="quantidade" title="${message(code: 'itemPedido.quantidade.label', default: 'Quantidade')}" />
 						<th><g:message code="itemPedido.opcaoUnidadeMedida.label" default="Opcao Unidade Medida" /></th>
                          <td></td>  <!-- TAG ADICIONADA -->
 					</tr>
@@ -50,11 +48,11 @@
 				<tbody>
 				<g:each in="${itemPedidoInstanceList}" status="i" var="itemPedidoInstance">
                     <tr class="gradeA">  <!--TAG ADICIONADA -->
-
+                        <td>
+                            <img style="width: 200px; height: 200px" src="${createLink(controller:'arquivo', action:'showImagem', id:"${itemPedidoInstance.opcaoCardapio.arquivo.id}")}" width='300' />
+                        </td>
+                        <td>${fieldValue(bean: itemPedidoInstance, field: "opcaoCardapio")}</td>
 						<td><g:link action="show" id="${itemPedidoInstance.id}">${fieldValue(bean: itemPedidoInstance, field: "quantidade")}</g:link></td>
-
-						<td>${fieldValue(bean: itemPedidoInstance, field: "opcaoCardapio")}</td>
-
 						<td>${fieldValue(bean: itemPedidoInstance, field: "opcaoUnidadeMedida")}</td>
                         <!-- ADICIONADO TD EDITAR E DELETAR  --->
                         <td class="col-md-1">

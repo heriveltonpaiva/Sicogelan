@@ -38,7 +38,8 @@
 
                                     <!-- #################### FIM ADICIONADO DIV 1 ############################## -->
 					<tr>
-
+                         <th><g:message code="opcaoCardapio.arquivo.label" default="Foto da Opção Cardápio" /></th>
+                         <th><g:message code="opcaoUnidadeMedida.opcaoCardapio.label" default="Opcao Cardapio" /></th>
 						<g:sortableColumn property="descricao" title="${message(code: 'opcaoUnidadeMedida.descricao.label', default: 'Descricao')}" />
 					
 						<g:sortableColumn property="valorAcrescido" title="${message(code: 'opcaoUnidadeMedida.valorAcrescido.label', default: 'Valor Acrescido')}" />
@@ -47,14 +48,18 @@
 					
 						<g:sortableColumn property="quantidadeReal" title="${message(code: 'opcaoUnidadeMedida.quantidadeReal.label', default: 'Quantidade Real')}" />
 
-						<th><g:message code="opcaoUnidadeMedida.opcaoCardapio.label" default="Opcao Cardapio" /></th>
+
                          <td></td>  <!-- TAG ADICIONADA -->
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${opcaoUnidadeMedidaInstanceList}" status="i" var="opcaoUnidadeMedidaInstance">
                     <tr class="gradeA">  <!--TAG ADICIONADA -->
-					
+                        <td>
+                            <img style="width: 200px; height: 200px" src="${createLink(controller:'arquivo', action:'showImagem', id:"${opcaoUnidadeMedidaInstance.opcaoCardapio.arquivo.id}")}" width='300' />
+                        </td>
+                        <td>${fieldValue(bean: opcaoUnidadeMedidaInstance, field: "opcaoCardapio")}</td>
+
 						<td><g:link action="show" id="${opcaoUnidadeMedidaInstance.id}">${fieldValue(bean: opcaoUnidadeMedidaInstance, field: "descricao")}</g:link></td>
 					
 						<td>${fieldValue(bean: opcaoUnidadeMedidaInstance, field: "valorAcrescido")}</td>
@@ -63,7 +68,7 @@
 					
 						<td>${fieldValue(bean: opcaoUnidadeMedidaInstance, field: "quantidadeReal")}</td>
 					
-						<td>${fieldValue(bean: opcaoUnidadeMedidaInstance, field: "opcaoCardapio")}</td>
+
                         <!-- ADICIONADO TD EDITAR E DELETAR  --->
                         <td class="col-md-1"> <!--TAG ADICIONADA -->
                         <g:form url="[resource:opcaoUnidadeMedidaInstance, action:'delete']" method="DELETE"> <!--ALTER ENTITY -->

@@ -10,7 +10,6 @@ class RegistroGeral {
     Date dateCreated
     Date lastUpdated
     static belongsTo = [usuario:Usuario]
-    static hasOne = [compra:Compra]
     static constraints = {
 
         permissao()

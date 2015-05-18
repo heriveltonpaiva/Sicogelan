@@ -44,7 +44,7 @@
 						<g:sortableColumn property="valorTotal" title="${message(code: 'pedido.valorTotal.label', default: 'Valor Total')}" />
 					
 						<g:sortableColumn property="statusConsumo" title="${message(code: 'pedido.statusConsumo.label', default: 'Status Consumo')}" />
-					
+
 						<th><g:message code="pedido.itemPedido.label" default="Item Pedido" /></th>
 					
 						<th><g:message code="pedido.mesa.label" default="Mesa" /></th>
@@ -62,9 +62,9 @@
 						<td>${fieldValue(bean: pedidoInstance, field: "valorTotal")}</td>
 					
 						<td>${fieldValue(bean: pedidoInstance, field: "statusConsumo")}</td>
-					
+
 						<td>${fieldValue(bean: pedidoInstance, field: "itemPedido")}</td>
-					
+
 						<td>${fieldValue(bean: pedidoInstance, field: "mesa")}</td>
 					
 						<td>${fieldValue(bean: pedidoInstance, field: "registroGeral")}</td>
