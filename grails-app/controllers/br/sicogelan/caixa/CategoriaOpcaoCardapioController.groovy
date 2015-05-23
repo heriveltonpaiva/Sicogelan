@@ -1,6 +1,6 @@
 package br.sicogelan.caixa
 
-
+import br.sicogelan.comum.Arquivo
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -36,8 +36,12 @@ class CategoriaOpcaoCardapioController {
             return
         }
 
-        categoriaOpcaoCardapioInstance.save flush:true
-
+        def arquivoEnvio = request.getFile("arquivoEnvio")
+        if(!arquivoEnvio.empty){
+            def arquivo = new Arquivo(nome: arquivoEnvio.originalFilename, contentType: arquivoEnvio.contentType, arquivo:arquivoEnvio.getBytes())
+            categoriaOpcaoCardapioInstance.arquivo = arquivo.save(flush:true)
+            categoriaOpcaoCardapioInstance.save flush:true
+        }
         request.withFormat {
             form multipartForm {
                 flash.message = 'Cadastro Realizado com Sucesso.'

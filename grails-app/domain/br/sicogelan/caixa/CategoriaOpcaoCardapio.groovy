@@ -13,7 +13,7 @@ class CategoriaOpcaoCardapio {
 
     static constraints = {
         descricao()
-        arquivo()
+        arquivo(nullable: true)
     }
     String toString(){
         return descricao

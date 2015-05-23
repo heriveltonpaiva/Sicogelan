@@ -41,20 +41,20 @@
                                     <!-- Form Elements -->
                                     <div class="panel-body">
                                         <div class="row">
-                                            <fieldset class="form">
-                                                <g:render template="form"/>
-                                            </fieldset>
+
                                             <div class="col-md-6">
                                             <!-- #################### FIM INICIO DIV ADICIONADO 2 ########################### -->
-                                                <g:form url="[resource:cardapioInstance, action:'save']"  enctype="multipart/form-data" > <!-- ALTER ENTIDADE-->
-
+                                                <g:uploadForm url="[resource:cardapioInstance, action:'save']"  > <!-- ALTER ENTIDADE-->
+                                                    <fieldset class="form">
+                                                        <g:render template="form"/>
+                                                    </fieldset>
                                                     <div class="panel-heading">
                                                         <fieldset class="buttons">
                                                             <g:submitButton  name="create" class="btn btn-primary" value="Salvar Registro" />
                                                             <button type="reset" class="btn btn-default">Limpar</button>
                                                         </fieldset>
                                                     </div>
-                                                </g:form>
+                                                </g:uploadForm>
 
                                             <!--########### FECHAMENTO DIVS ADICIONADO 2 ######################### -->
                                             </div>

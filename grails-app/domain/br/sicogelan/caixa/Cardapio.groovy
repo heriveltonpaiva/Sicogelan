@@ -11,7 +11,8 @@ class Cardapio {
     static belongsTo= [arquivo: Arquivo]
 
     static constraints = {
-        descricao(blank: false)
+        descricao()
+        arquivo(nullable: true)
     }
     String toString(){
         return descricao

@@ -12,13 +12,14 @@
 </div>
 </div>
 
-<div class="fieldcontain ${hasErrors(bean: categoriaOpcaoCardapioInstance, field: 'arquivo', 'error')} required">
-<div class="form-group">
-	<label for="arquivo">
-		<g:message code="categoriaOpcaoCardapio.arquivo.label" default="Arquivo" />
-		<span class="required-indicator">*</span>
-	</label>
-	<g:select id="arquivo" name="arquivo.id" from="${br.sicogelan.comum.Arquivo.list()}" optionKey="id" required="" value="${categoriaOpcaoCardapioInstance?.arquivo?.id}" class="form-control"/>
-</div>
-</div>
+<div class="fieldcontain ${hasErrors(bean: cardapioInstance, field: 'arquivo', 'error')} required">
+    <div class="form-group">
+        <label for="arquivoEnvio">
+            <g:message code="cardapio.arquivo.label" default="Arquivo" />
+            <span class="required-indicator">*</span>
+        </label>
 
+        <g:field type="file" name="arquivoEnvio" class="form-control" />
+
+    </div>
+</div>

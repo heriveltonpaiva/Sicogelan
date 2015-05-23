@@ -38,7 +38,12 @@ class CardapioController {
             return
         }
 
-        cardapioInstance.save flush:true
+        def arquivoEnvio = request.getFile("arquivoEnvio")
+        if(!arquivoEnvio.empty){
+            def arquivo = new Arquivo(nome: arquivoEnvio.originalFilename, contentType: arquivoEnvio.contentType, arquivo:arquivoEnvio.getBytes())
+            cardapioInstance.arquivo = arquivo.save(flush:true)
+            cardapioInstance.save flush:true
+        }
 
         request.withFormat {
             form multipartForm {

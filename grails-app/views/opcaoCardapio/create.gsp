@@ -43,7 +43,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                             <!-- #################### FIM INICIO DIV ADICIONADO 2 ########################### -->
-                                                <g:form url="[resource:opcaoCardapioInstance, action:'save']"  > <!-- ALTER ENTIDADE-->
+                                                <g:uploadForm url="[resource:opcaoCardapioInstance, action:'save']"  > <!-- ALTER ENTIDADE-->
                                                     <fieldset class="form">
                                                         <g:render template="form"/>
                                                     </fieldset>
@@ -53,7 +53,7 @@
                                                             <button type="reset" class="btn btn-default">Limpar</button>
                                                         </fieldset>
                                                     </div>
-                                                </g:form>
+                                                </g:uploadForm>
 
                                             <!--########### FECHAMENTO DIVS ADICIONADO 2 ######################### -->
                                             </div>

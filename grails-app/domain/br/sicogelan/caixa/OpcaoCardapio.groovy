@@ -21,7 +21,7 @@ class OpcaoCardapio {
         preco()
         observacao()
         cardapio()
-        arquivo()
+        arquivo(nullable: true)
         categoriaOpcaoCardapio()
 
     }
