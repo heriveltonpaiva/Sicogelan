@@ -23,6 +23,20 @@ class OpcaoCardapioController {
     def create() {
         respond new OpcaoCardapio(params)
     }
+    /**
+     * Mostrar as informações do cardapio via AJAX após selecionar o ComboBox
+     * @return
+     */
+    def cardapioById() {
+        respond Cardapio.findById(request.getParameter("idCardapio")), view:'infoCardapio'
+    }
+    /**
+     * Mostra as informações da categoria da opção do cardápio via AJAX após selecionar o ComboBox
+     * @return
+     */
+    def categoriaOpcaoById(){
+        respond CategoriaOpcaoCardapio.findById(request.getParameter("idCategoriaOpcao")), view:'infoCategoriaOpcao'
+    }
 
     @Transactional
     def save(OpcaoCardapio opcaoCardapioInstance) {
