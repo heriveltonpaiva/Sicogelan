@@ -59,7 +59,7 @@
 				<g:each in="${opcaoCardapioInstanceList}" status="i" var="opcaoCardapioInstance">
                     <tr class="gradeA">  <!--TAG ADICIONADA -->
                         <td>
-                            <img style="width: 200px; height: 200px" src="${createLink(controller:'arquivo', action:'showImagem', id:"${opcaoCardapioInstance.arquivo.id}")}" width='300' />
+                            <img style="width: 100px; height: 100px" src="${createLink(controller:'arquivo', action:'showImagem', id:"${opcaoCardapioInstance.arquivo.id}")}" width='300' />
                         </td>
 						<td><g:link action="show" id="${opcaoCardapioInstance.id}">${fieldValue(bean: opcaoCardapioInstance, field: "descricao")}</g:link></td>
 					
@@ -69,11 +69,11 @@
 					
 						<td>${fieldValue(bean: opcaoCardapioInstance, field: "cardapio")}</td>
                         <td>
-                            <img style="width: 200px; height: 200px" src="${createLink(controller:'arquivo', action:'showImagem', id:"${opcaoCardapioInstance.cardapio.arquivo.id}")}" width='300' />
+                            <img style="width: 100px; height: 100px" src="${createLink(controller:'arquivo', action:'showImagem', id:"${opcaoCardapioInstance.cardapio.arquivo.id}")}" width='300' />
                         </td>
                         <td>${fieldValue(bean: opcaoCardapioInstance, field: "categoriaOpcaoCardapio")}</td>
                         <td>
-                            <img style="width: 200px; height: 200px" src="${createLink(controller:'arquivo', action:'showImagem', id:"${opcaoCardapioInstance.categoriaOpcaoCardapio.arquivo.id}")}" width='300' />
+                            <img style="width: 100px; height: 100px" src="${createLink(controller:'arquivo', action:'showImagem', id:"${opcaoCardapioInstance.categoriaOpcaoCardapio.arquivo.id}")}" width='300' />
                         </td>
                         <td>${fieldValue(bean: opcaoCardapioInstance, field: "opcaoIngrediente")}</td>
                         <!-- ADICIONADO TD EDITAR E DELETAR  --->

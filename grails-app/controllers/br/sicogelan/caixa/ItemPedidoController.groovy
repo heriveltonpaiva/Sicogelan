@@ -1,6 +1,6 @@
 package br.sicogelan.caixa
 
-
+import grails.converters.JSON
 
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
@@ -9,6 +9,7 @@ import org.springframework.security.access.annotation.Secured
 @Secured(['ROLE_ADMIN'])
 class ItemPedidoController {
 
+    def listaItemPedidos = new ArrayList<ItemPedido>()
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
@@ -22,7 +23,29 @@ class ItemPedidoController {
 
     def create() {
         respond new ItemPedido(params)
+
     }
+
+    /**
+     * Adiciona os itens pedidos a uma lista temporária
+     * @param itemPedidoInstance
+     * @return
+     */
+    def adicionarItem(ItemPedido itemPedidoInstance){
+
+        itemPedidoInstance = new ItemPedido(params)
+        listaItemPedidos.add(itemPedidoInstance)
+
+        request.withFormat {
+            form multipartForm {
+                flash.message = 'Cadastro Realizado com Sucesso.'
+                // Exibir a mensagem de cadastro e continuar na memsa página
+                render view:'adicionarItem', model:[lista: listaItemPedidos]
+            }
+            '*' { render action:'adicionarItem', model:[lista: listaItemPedidos] }
+        }
+    }
+
 
     @Transactional
     def save(ItemPedido itemPedidoInstance) {
@@ -103,4 +126,5 @@ class ItemPedidoController {
             '*'{ render status: NOT_FOUND }
         }
     }
+
 }

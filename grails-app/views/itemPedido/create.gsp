@@ -41,19 +41,21 @@
                                     <!-- Form Elements -->
                                     <div class="panel-body">
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-12">
                                             <!-- #################### FIM INICIO DIV ADICIONADO 2 ########################### -->
-                                                <g:form url="[resource:itemPedidoInstance, action:'save']"  > <!-- ALTER ENTIDADE-->
+                                                <!-- ALTER ENTIDADE-->
                                                     <fieldset class="form">
                                                         <g:render template="form"/>
+
                                                     </fieldset>
+
                                                     <div class="panel-heading">
                                                         <fieldset class="buttons">
                                                             <g:submitButton  name="create" class="btn btn-primary" value="Salvar Registro" />
                                                             <button type="reset" class="btn btn-default">Limpar</button>
                                                         </fieldset>
                                                     </div>
-                                                </g:form>
+
 
                                             <!--########### FECHAMENTO DIVS ADICIONADO 2 ######################### -->
                                             </div>

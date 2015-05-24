@@ -53,7 +53,9 @@ font-size: 16px;"> <sec:ifLoggedIn>Bem vindo <sec:username/></sec:ifLoggedIn>
                     <li>
                         <a class="active-menu"  href=${createLink(uri: '')}><i class="fa fa-dashboard fa-3x"></i> Painel Principal</a>
                     </li>
-
+                    <li>
+                        <a  href="${createLink(uri: '/itemPedido/create.gsp')}"><i class="fa fa-qrcode fa-3x"></i> Fazer Pedido</a>
+                    </li>
                     <li  >
                         <a  href="${createLink(uri: '/mesa/index.gsp')}"><i class="fa fa-table fa-3x"></i> Cadastros <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
@@ -94,9 +96,6 @@ font-size: 16px;"> <sec:ifLoggedIn>Bem vindo <sec:username/></sec:ifLoggedIn>
                         </ul>
                     </li>
 
-                    <li>
-                        <a  href="${createLink(uri: '/pedido/index.gsp')}"><i class="fa fa-qrcode fa-3x"></i> Pedidos</a>
-                    </li>
                     <li  >
                         <a  href="${createLink(uri: '/opcaoCardapio/index.gsp')}"><i class="fa fa-bar-chart-o fa-3x"></i> Opções Cardápio</a>
                     </li>
