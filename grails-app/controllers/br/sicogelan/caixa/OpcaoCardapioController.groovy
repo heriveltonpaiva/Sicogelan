@@ -6,10 +6,10 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import org.springframework.security.access.annotation.Secured
 @Transactional(readOnly = true)
-@Secured(['ROLE_ADMIN'])
+@Secured(['permitAll'])
 class OpcaoCardapioController {
 
-    static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
+    static allowedMethods = [index: "GET", save: "POST", update: "PUT", delete: "DELETE"]
 
     def index(Integer max) {
         params.max = Math.min(max ?: 5, 100)

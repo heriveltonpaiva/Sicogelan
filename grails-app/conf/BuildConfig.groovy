@@ -62,6 +62,7 @@ grails.project.dependency.resolution = {
         runtime ":hibernate4:4.3.8.1"
         runtime ":database-migration:1.4.0"
         runtime ":jquery:1.11.1"
+        runtime ":cors:1.1.6"
 
     }
 }

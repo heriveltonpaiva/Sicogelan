@@ -116,6 +116,7 @@ log4j.main = {
            'net.sf.ehcache.hibernate'
 }
 
+cors.url.pattern = '/opcaoCardapio/*'
 
 // Added by the Spring Security Core plugin:
 grails.plugin.springsecurity.userLookup.userDomainClassName = 'br.sicogelan.seguranca.Usuario'
@@ -130,6 +131,7 @@ grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/**/js/**':                      ['permitAll'],
 	'/**/css/**':                     ['permitAll'],
 	'/**/images/**':                  ['permitAll'],
-	'/**/favicon.ico':                ['permitAll']
+	'/**/favicon.ico':                ['permitAll'],
+    '/opcaoCardapio/*':               ['permitAll']
 ]
 
