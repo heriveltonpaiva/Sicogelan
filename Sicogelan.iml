@@ -97,5 +97,6 @@
       </library>
     </orderEntry>
     <orderEntry type="module" module-name="Sicogelan-grailsPlugins" />
+    <orderEntry type="library" name="grails-2.5.0" level="application" />
   </component>
 </module>

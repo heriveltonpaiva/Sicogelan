@@ -1,7 +1,7 @@
 package br.sicogelan.caixa
 
 import grails.converters.JSON
-
+import groovy.json.JsonSlurper
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import org.springframework.security.access.annotation.Secured
@@ -33,38 +33,46 @@ class ItemPedidoController {
      */
     def adicionarItem(ItemPedido itemPedidoInstance){
 
+        params.each { println it}
+
         itemPedidoInstance = new ItemPedido(params)
         listaItemPedidos.add(itemPedidoInstance)
 
-        request.withFormat {
-            form multipartForm {
-                flash.message = 'Cadastro Realizado com Sucesso.'
-                // Exibir a mensagem de cadastro e continuar na memsa página
-                render view:'adicionarItem', model:[lista: listaItemPedidos]
-            }
-            '*' { render action:'adicionarItem', model:[lista: listaItemPedidos] }
-        }
+        def retorno = [:]
+        retorno += ['item': itemPedidoInstance]
+        retorno += ['descricao': itemPedidoInstance.opcaoCardapio.descricao]
+        render retorno as JSON
+
+//        println(request.getParameter("idItemPedido"))
+     //   request.withFormat {
+     //       form multipartForm {
+     //           flash.message = 'Cadastro Realizado com Sucesso.'
+     //           // Exibir a mensagem de cadastro e continuar na memsa página
+    //            render view:'adicionarItem', model:[lista: listaItemPedidos]
+    //        }
+    //        '*' { render action:'adicionarItem', model:[lista: listaItemPedidos] }
+   //     }
     }
 
 
     @Transactional
-    def save(ItemPedido itemPedidoInstance) {
-        if (itemPedidoInstance == null) {
-            notFound()
-            return
+    def save() {
+        println listaItemPedidos
+
+        def pedido = new Pedido()
+        double valorTotal  = 0.0
+
+        listaItemPedidos.each {
+            valorTotal += it.opcaoCardapio.preco
         }
 
-        if (itemPedidoInstance.hasErrors()) {
-            respond itemPedidoInstance.errors, view:'create'
-            return
-        }
+        println valorTotal
+       // ItemPedido.saveAll(listaItemPedidos)
 
-        itemPedidoInstance.save flush:true
 
         request.withFormat {
             form multipartForm {
                 flash.message = 'Cadastro Realizado com Sucesso.'
-                // Exibir a mensagem de cadastro e continuar na memsa página
                 redirect action:"create"
             }
             '*' { render  status: CREATED}

@@ -51,7 +51,7 @@
 
                                                     <div class="panel-heading">
                                                         <fieldset class="buttons">
-                                                            <g:submitButton  name="create" class="btn btn-primary" value="Salvar Registro" />
+
                                                             <button type="reset" class="btn btn-default">Limpar</button>
                                                         </fieldset>
                                                     </div>
@@ -64,6 +64,21 @@
                                 </div>
                             </div>
                             <!-- ############### FEHAMENTO DIVS ADICIONADO 2 ############################## -->
+
+                            <p>retorno</p>
+                            <table class="table table-striped" id="tblOpcaoCardapio">
+                                <thead>
+                                <tr>
+                                    <th>Foto</th>
+                                    <th>Opção</th>
+                                    <th>Preço</th>
+                                    <th>Categoria</th>
+                                    <th>Cardapio</th>
+                                </tr>
+                                </thead>
+                                <tbody id="ajaxRetorno">
+                                </tbody>
+                            </table>
 
                             <!--########### FECHAMENTO DIVS ADICIONADO 1 ######################### -->
                         </div>

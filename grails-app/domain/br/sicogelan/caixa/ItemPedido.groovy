@@ -2,12 +2,17 @@ package br.sicogelan.caixa
 
 class ItemPedido {
 
-    int quantidade;
+    int quantidade
     Date dateCreated
+    OpcaoCardapio opcaoCardapio
+    OpcaoUnidadeMedida opcaoUnidadeMedida
 
     static hasMany = [pedido: Pedido]
-    static belongsTo = [opcaoCardapio:OpcaoCardapio, opcaoUnidadeMedida:OpcaoUnidadeMedida]
 
+
+    static mapping = {
+        opcaoCardapio lazy: false
+    }
 
     static constraints = {
         quantidade()

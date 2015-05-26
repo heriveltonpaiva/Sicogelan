@@ -9,6 +9,37 @@
 //= require_tree .
 //= require_self
 
+
+$(document).ready(function() {
+	$("form[data-id]").submit(function (e) {
+		e.preventDefault();
+		alert("submeteu...");
+		var dados = $(this).serializeArray();
+		var url = $(this).data("url");
+		console.log("url = " + url);
+		console.log(dados);
+		$.ajax({
+			url: url,
+			method: "POST",
+			data: dados,
+			dataType: "json",
+			success: function (retorno) {
+				console.log("retorno");
+				console.log(JSON.stringify(retorno));
+					var html = "<tr data-id=\"" + retorno.id + "\">";
+					html += "<td>" + retorno.item.opcaoUnidadeMedida.id + "</td>";
+				html += "<td>" + retorno.descricao + "</td>";
+				//html += "<td>" + retorno.item.cardapio.id + "</td>";
+				html += "<td>" + retorno.item.pedido + "</td>";
+				html += "<td>" + retorno.item.quantidade + "</td>";
+					html += "</tr>";
+					$("#ajaxRetorno").append(html);
+			}
+		});
+	});
+});
+
+
 if (typeof jQuery !== 'undefined') {
 	(function($) {
 		$('#spinner').ajaxStart(function() {
