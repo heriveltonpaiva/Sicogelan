@@ -9,7 +9,8 @@ class RegistroGeral {
     String ip
     Date dateCreated
     Date lastUpdated
-    static belongsTo = [usuario:Usuario]
+    Usuario usuario
+
     static constraints = {
 
         permissao()

@@ -48,20 +48,21 @@ font-size: 16px;"> <sec:ifLoggedIn>Bem vindo <sec:username/></sec:ifLoggedIn>
             <div class="sidebar-collapse">
                 <ul class="nav" id="main-menu">
 				<li class="text-center">
-                    <img src="${assetPath(src:'find_user.png')}" class="user-image img-responsive"/>
+                    <img src="${assetPath(src:'logoSicogelan.png')}" class="user-image img-responsive"/>
 					</li>
                     <li>
-                        <a class="active-menu"  href=${createLink(uri: '')}><i class="fa fa-dashboard fa-3x"></i> Painel Principal</a>
+                        <a  href="${createLink(uri: '/pedido/index.gsp')}"><i class="fa fa-desktop fa-3x"></i> Painel Pedidos</a>
                     </li>
                     <li>
                         <a  href="${createLink(uri: '/itemPedido/create.gsp')}"><i class="fa fa-qrcode fa-3x"></i> Fazer Pedido</a>
                     </li>
                     <li  >
+                        <a  href="${createLink(uri: '/opcaoCardapio/index.gsp')}"><i class="fa fa-bar-chart-o fa-3x"></i> Opções Cardápio</a>
+                    </li>
+                    <li  >
                         <a  href="${createLink(uri: '/mesa/index.gsp')}"><i class="fa fa-table fa-3x"></i> Cadastros <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
-                            <li>
-                                <a href="${createLink(uri: '/pedido/index.gsp')}">Cadastrar Pedido</a>
-                            </li>
+
                             <li>
                                 <a href="${createLink(uri: '/itemPedido/index.gsp')}">Cadastrar ItemPedido</a>
                             </li>
@@ -97,9 +98,6 @@ font-size: 16px;"> <sec:ifLoggedIn>Bem vindo <sec:username/></sec:ifLoggedIn>
                     </li>
 
                     <li  >
-                        <a  href="${createLink(uri: '/opcaoCardapio/index.gsp')}"><i class="fa fa-bar-chart-o fa-3x"></i> Opções Cardápio</a>
-                    </li>
-                    <li  >
                         <a  href="form.html"><i class="fa fa-edit fa-3x"></i> Painel Administrativo <span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level">
                             <li>
@@ -116,8 +114,9 @@ font-size: 16px;"> <sec:ifLoggedIn>Bem vindo <sec:username/></sec:ifLoggedIn>
                             </li>
                         </ul>
                     </li>
+
                     <li>
-                        <a  href="${createLink(uri: '/cardapio/index.gsp')}"><i class="fa fa-desktop fa-3x"></i> Cardápio</a>
+                        <a class="active-menu"  href=${createLink(uri: '')}><i class="fa fa-dashboard fa-3x"></i> Grails Info</a>
                     </li>
                 </ul>
                

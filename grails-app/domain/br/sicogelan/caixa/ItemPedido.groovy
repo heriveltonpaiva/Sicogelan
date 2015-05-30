@@ -6,8 +6,7 @@ class ItemPedido {
     Date dateCreated
     OpcaoCardapio opcaoCardapio
     OpcaoUnidadeMedida opcaoUnidadeMedida
-
-    static hasMany = [pedido: Pedido]
+    Pedido pedido
 
 
     static mapping = {

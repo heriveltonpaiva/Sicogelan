@@ -1,5 +1,7 @@
 package br.sicogelan.caixa
 
+import br.sicogelan.comum.RegistroGeral
+import br.sicogelan.seguranca.Usuario
 import grails.converters.JSON
 import groovy.json.JsonSlurper
 import static org.springframework.http.HttpStatus.*
@@ -27,13 +29,11 @@ class ItemPedidoController {
     }
 
     /**
-     * Adiciona os itens pedidos a uma lista temporária
+     * Adiciona os itens pedidos a uma lista temporária e retorna como JSON para ser listado usando AJAX
      * @param itemPedidoInstance
      * @return
      */
     def adicionarItem(ItemPedido itemPedidoInstance){
-
-        params.each { println it}
 
         itemPedidoInstance = new ItemPedido(params)
         listaItemPedidos.add(itemPedidoInstance)
@@ -41,38 +41,47 @@ class ItemPedidoController {
         def retorno = [:]
         retorno += ['item': itemPedidoInstance]
         retorno += ['descricao': itemPedidoInstance.opcaoCardapio.descricao]
-        render retorno as JSON
+        retorno += ['preco': itemPedidoInstance.opcaoCardapio.preco]
+        retorno += ['unidadeMedida':itemPedidoInstance.opcaoUnidadeMedida.descricao]
+        retorno += ['valorAcrescido':itemPedidoInstance.opcaoUnidadeMedida.valorAcrescido]
 
-//        println(request.getParameter("idItemPedido"))
-     //   request.withFormat {
-     //       form multipartForm {
-     //           flash.message = 'Cadastro Realizado com Sucesso.'
-     //           // Exibir a mensagem de cadastro e continuar na memsa página
-    //            render view:'adicionarItem', model:[lista: listaItemPedidos]
-    //        }
-    //        '*' { render action:'adicionarItem', model:[lista: listaItemPedidos] }
-   //     }
+        render retorno as JSON
     }
 
-
+    /**
+     * Cria um novo Pedido, recupera a Lista de Itens Pedidos e Salva a Lista pedidos vinculado um Pedido.
+     * @return
+     */
     @Transactional
     def save() {
-        println listaItemPedidos
 
-        def pedido = new Pedido()
-        double valorTotal  = 0.0
+        def pedido = new Pedido(params)
 
+        def valorTotal = 0;
         listaItemPedidos.each {
-            valorTotal += it.opcaoCardapio.preco
+            it.setPedido(pedido)
+            valorTotal += (it.quantidade * it.opcaoCardapio.preco)+it.opcaoUnidadeMedida.valorAcrescido
         }
 
-        println valorTotal
-       // ItemPedido.saveAll(listaItemPedidos)
 
+        def registroGeral = new RegistroGeral()
+
+        registroGeral.setIp('127.0.0.1')
+        registroGeral.setUsuario(Usuario.findById(5))
+        registroGeral.setPermissao('Acesso')
+        registroGeral.save(flush: true)
+
+
+        pedido.setRegistroGeral(registroGeral)
+        pedido.setStatus('Para Fazer')
+        pedido.setValorTotal(valorTotal)
+        pedido.save(flush: true)
+
+        ItemPedido.saveAll(listaItemPedidos)
 
         request.withFormat {
             form multipartForm {
-                flash.message = 'Cadastro Realizado com Sucesso.'
+                flash.message = 'Pedido Realizado com Sucesso.'
                 redirect action:"create"
             }
             '*' { render  status: CREATED}

@@ -15,9 +15,7 @@
         </div>
     </div>
            <div class="col-md-12">
-                <div class="panel panel-default">
-
-
+                <div class="panel panel-info">
 <div class="table-responsive">
             <table class="table table-striped table-bordered table-hover">
 
@@ -25,7 +23,7 @@
                 <tr>
                     <th colspan="2">Opção Cardápio</th>
                     <th>Ingredientes</th>
-                    <th>R$</th>
+                    <th>Preço R$</th>
                     <th>Quantidade</th>
                     <th>Unidade Medida</th>
                     <td></td>  <!-- TAG ADICIONADA -->
@@ -38,7 +36,7 @@
                         <tr class="grade-x">
                             <g:hiddenField name="opcaoCardapio.id" value="${opcao.id}" />
                             <td>
-                            <img style="width: 100px; height: 100px" src="${createLink(controller:'arquivo', action:'showImagem', id:"${opcao.arquivo.id}")}" />
+                            <img style="width: 50px; height: 50px" src="${createLink(controller:'arquivo', action:'showImagem', id:"${opcao.arquivo.id}")}" />
                         </td>
                             <div class="fieldcontain ${hasErrors(bean: itemPedidoInstance, field: 'opcaoCardapio', 'error')} required">
                                 <td>${fieldValue(bean: opcao, field: "descricao")} </td>
@@ -46,9 +44,13 @@
                             %{--<td>${OpcaoIngrediente.findByOpcaoCardapio(opcao)} </td>--}%
                             <td>${opcao?.opcaoIngrediente} </td>
                             <td>${fieldValue(bean: opcao, field: "preco")}</td>
+                            <td style="width:10px">
                             <div class="fieldcontain ${hasErrors(bean: itemPedidoInstance, field: 'quantidade', 'error')} required">
-                                <td><g:field name="quantidade" class="form-control" type="number" value="${itemPedidoInstance.quantidade}" required=""/></td>
+
+                                <g:field name="quantidade" class="form-control" type="number" value="${itemPedidoInstance.quantidade}" required=""/>
+
                             </div>
+                            </td>
                             <div class="fieldcontain ${hasErrors(bean: itemPedidoInstance, field: 'opcaoUnidadeMedida', 'error')} required" >
 
                                 <td>
@@ -60,10 +62,8 @@
                                 </td>
                             </div>
                             <td>
-                                %{--<button type="submit" class="btn btn-default" onclick="${remoteFunction(action: 'adicionarItem', update:"tabelaItens")}">
-                                    Adicionar aos Pedidos
-                                </button>--}%
-                                <button type="submit" class="btn btn-default">
+
+                                <button type="submit" class="btn btn-warning">
                                     Adicionar aos Pedidos
                                 </button>
                             </td>
@@ -81,39 +81,79 @@
 
 <g:form url="[resource:itemPedidoInstance, action:'save']"  name="frmItemPedido">
 
+    <div class="row">
+        <div class="col-md-12">
+                   <!-- Advanced Tables -->
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                            Meus Pedidos
+                </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                              <table class="table table-striped  table-hover"" id="tblOpcaoCardapio">
+                                  <thead>
+                                  <tr>
+                                      <th>Foto</th>
+                                      <th>Opção</th>
+                                      <th>Unidade Medida</th>
+                                      <th>Preço Unitário</th>
+                                      <th>Quantidade</th>
+                                      <th>Valor R$</th>
+                                  </tr>
+                                  </thead>
+                                  <tbody id="ajaxRetorno">
+                                  </tbody>
+                              </table>
 
-
-    <div class="fieldcontain ${hasErrors(bean: pedidoInstance, field: 'status', 'error')} required">
-        <div class="form-group">
-            <label for="status">
-                <g:message code="pedido.status.label" default="Status" />
-                <span class="required-indicator">*</span>
-            </label>
-            <g:textField class="form-control" name="status" required="" value="${pedidoInstance?.status}"/>
+                        </div>
+                    </div>
+            </div>
         </div>
     </div>
-
-    <div class="fieldcontain ${hasErrors(bean: pedidoInstance, field: 'valorTotal', 'error')} required">
-        <div class="form-group">
-            <label for="valorTotal">
-                <g:message code="pedido.valorTotal.label" default="Valor Total" />
-                <span class="required-indicator">*</span>
-            </label>
-            <g:field class="form-control" name="valorTotal" value="${fieldValue(bean: pedidoInstance, field: 'valorTotal')}" required=""/>
+    <table>
+    <th>Selecione a Mesa:</th>
+    <th><div style="margin-left:18px;">Status Consumo</div></th>
+    <th><div style="margin-left:18px;">Valor Total R$</div></th>
+    <th></th>
+    <tr>
+    <td >
+         <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="form-group">
+                        <g:select id="mesa" name="mesa.id" from="${br.sicogelan.caixa.Mesa.list()}" optionKey="id" required="" value="${pedidoInstance?.mesa?.id}" class="form-control"/>
+                    </div>
+                </div>
+            </div>
+         </div>
+    </td>
+    <td>
+        <div class="row" style="margin-left:5px;">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <g:select id="status" name="statusConsumo" from="['Local', 'Para Viagem']"  required="" value="${pedidoInstance?.statusConsumo}" class="form-control"/>
+                </div>
+            </div>
         </div>
-    </div>
-
-    <div class="fieldcontain ${hasErrors(bean: pedidoInstance, field: 'statusConsumo', 'error')} required">
-        <div class="form-group">
-            <label for="statusConsumo">
-                <g:message code="pedido.statusConsumo.label" default="Status Consumo" />
-                <span class="required-indicator">*</span>
-            </label>
-            <g:textField class="form-control" name="statusConsumo" required="" value="${pedidoInstance?.statusConsumo}"/>
+    </td>
+    <td>
+        <div class="row" style="margin-top:-10px; margin-left:5px;">
+            <div class="col-md-12">
+                    <input class="form-control" id="valorTotal" name="valorTotal" type="text" value="${fieldValue(bean: pedidoInstance, field: 'valorTotal')}" placeholder="R$ 0,00" disabled />
+                </div>
+            </div>
         </div>
-    </div>
+    </td>
+    <td >
+        <div class="row" style="margin-top:-10px; margin-left:5px;">
+            <div class="col-md-12" >
+        <g:submitButton   name="create" class="btn btn-primary" value="Finalizar Pedido"  />
+    </div></div>
+    </td>
+    </tr>
+    <table>
 
-    <g:submitButton  name="create" class="btn btn-primary" value="Finalizar Pedido" />
+
 </g:form>
 
 

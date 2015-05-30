@@ -8,18 +8,17 @@ class Pedido {
      double valorTotal
     //Para Local ou Viagem
      String statusConsumo
+     Mesa mesa
+     RegistroGeral registroGeral
 
-    static belongsTo = [mesa:Mesa, registroGeral:RegistroGeral, itemPedido:ItemPedido]
     static constraints = {
-
         status()
         valorTotal()
         statusConsumo()
-        itemPedido()
         mesa()
         registroGeral()
     }
     String toString(){
-        return status +" - "+statusConsumo
+        return status +" - "+statusConsumo+ '-'+mesa+' - '+valorTotal +' - '+registroGeral
     }
 }

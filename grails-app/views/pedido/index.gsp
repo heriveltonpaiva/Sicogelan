@@ -1,5 +1,5 @@
 
-<%@ page import="br.sicogelan.caixa.Pedido" %>
+<%@ page import="br.sicogelan.caixa.ItemPedido; br.sicogelan.caixa.Pedido" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -16,9 +16,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
 
-                            <a href="${createLink(uri: '/pedido/create')}" class="btn btn-primary" >Novo Pedido</a>  <!--ALTER ENTITY -->
-
-                        <!--Mensagens de Alerta e de Erro -->
+                         <!--Mensagens de Alerta e de Erro -->
                             <g:if test="${flash.message}">
                                 <div class="alert alert-info close" role="status">${flash.message}</div>
                             </g:if>
@@ -45,11 +43,11 @@
 					
 						<g:sortableColumn property="statusConsumo" title="${message(code: 'pedido.statusConsumo.label', default: 'Status Consumo')}" />
 
-						<th><g:message code="pedido.itemPedido.label" default="Item Pedido" /></th>
-					
 						<th><g:message code="pedido.mesa.label" default="Mesa" /></th>
-					
-						<th><g:message code="pedido.registroGeral.label" default="Registro Geral" /></th>
+                         <th> <label for="status">
+                             <g:message code="pedido.status.label" default="Status Pedido" />
+                         </label></th>
+						<th>Opção Cardápio Pedidos</th>
                         <td></td>  <!-- TAG ADICIONADA -->
 					</tr>
 				</thead>
@@ -63,18 +61,24 @@
 					
 						<td>${fieldValue(bean: pedidoInstance, field: "statusConsumo")}</td>
 
-						<td>${fieldValue(bean: pedidoInstance, field: "itemPedido")}</td>
-
 						<td>${fieldValue(bean: pedidoInstance, field: "mesa")}</td>
-					
-						<td>${fieldValue(bean: pedidoInstance, field: "registroGeral")}</td>
+                        <td>
+                        <div class="fieldcontain ${hasErrors(bean: pedidoInstance, field: 'status', 'error')} required">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <g:select id="status" name="status" from="['Para Fazer', 'Fazendo', 'Feito', 'Servido', 'Finalizado']"  required="" value="${pedidoInstance?.status}" class="form-control"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </td>
+                        <td>${br.sicogelan.caixa.ItemPedido.findAllByPedido(pedidoInstance)}</td>
                         <!-- ADICIONADO TD EDITAR E DELETAR  --->
                         <td class="col-md-1"> <!--TAG ADICIONADA -->
+                   <button  class="btn btn-info col-sm-12" type="submit">Detalhar</button>
                         <g:form url="[resource:pedidoInstance, action:'delete']" method="DELETE"> <!--ALTER ENTITY -->
-
-                            <g:link class="btn btn-primary col-sm-12 " action="edit" resource="${pedidoInstance}" ><g:message code="default.button.edit.label" default="Edit" /></g:link> <!--ALTER ENTITY -->
-                            <g:actionSubmit  class="btn btn-danger col-sm-12" action="delete" value="${message(code: 'default.button.delete.label',
-                                    default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message',
+                            <g:actionSubmit  class="btn btn-danger col-sm-12" action="delete" value="Cancelar" onclick="return confirm('${message(code: 'default.button.delete.confirm.message',
                                     default: 'Você tem certeza?')}');"/>
 
                         </g:form>

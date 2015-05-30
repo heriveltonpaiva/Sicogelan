@@ -8,12 +8,9 @@
 <body>
 <!-- ############################## INICIO DIV ADICIONADO 1 ######################################################## !-->
 <div id="page-inner">
-    <div class="col-md-10 col-sm-10">
+    <div class="col-md-12 col-sm-12">
         <div class="panel panel-default">
-            <div class="panel-heading">
-                <g:link class="btn btn-warning right" action="index">Listagem</g:link>
-            </div>
-        <!--Mensagens de Alerta e de Erro -->
+          <!--Mensagens de Alerta e de Erro -->
             <g:if test="${flash.message}">
                 <div class="alert alert-info close" role="status">${flash.message}</div>
             </g:if>
@@ -28,7 +25,7 @@
             <div class="panel-body">
 
                 <ul class="nav nav-tabs">
-                    <li class="active" id="tabView0"><a href="#formulario" data-toggle="tab">Cadastro</a></li>
+                    <li class="active" id="tabView0"><a href="#formulario" data-toggle="tab">Fazer Pedido</a></li>
                 </ul>
                 <div class="tab-content">
                     <div class="tab-pane fade active in" id="formulario" >
@@ -48,39 +45,12 @@
                                                         <g:render template="form"/>
 
                                                     </fieldset>
-
-                                                    <div class="panel-heading">
-                                                        <fieldset class="buttons">
-
-                                                            <button type="reset" class="btn btn-default">Limpar</button>
-                                                        </fieldset>
-                                                    </div>
-
-
                                             <!--########### FECHAMENTO DIVS ADICIONADO 2 ######################### -->
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <!-- ############### FEHAMENTO DIVS ADICIONADO 2 ############################## -->
-
-                            <p>retorno</p>
-                            <table class="table table-striped" id="tblOpcaoCardapio">
-                                <thead>
-                                <tr>
-                                    <th>Foto</th>
-                                    <th>Opção</th>
-                                    <th>Preço</th>
-                                    <th>Categoria</th>
-                                    <th>Cardapio</th>
-                                </tr>
-                                </thead>
-                                <tbody id="ajaxRetorno">
-                                </tbody>
-                            </table>
-
-                            <!--########### FECHAMENTO DIVS ADICIONADO 1 ######################### -->
                         </div>
                     </div>
                 </div>

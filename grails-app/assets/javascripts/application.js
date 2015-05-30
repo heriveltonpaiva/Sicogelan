@@ -13,7 +13,6 @@
 $(document).ready(function() {
 	$("form[data-id]").submit(function (e) {
 		e.preventDefault();
-		alert("submeteu...");
 		var dados = $(this).serializeArray();
 		var url = $(this).data("url");
 		console.log("url = " + url);
@@ -27,13 +26,24 @@ $(document).ready(function() {
 				console.log("retorno");
 				console.log(JSON.stringify(retorno));
 					var html = "<tr data-id=\"" + retorno.id + "\">";
-					html += "<td>" + retorno.item.opcaoUnidadeMedida.id + "</td>";
+				html += "<td>" + retorno.item.opcaoUnidadeMedida.id + "</td>";
 				html += "<td>" + retorno.descricao + "</td>";
+                html += "<td>" + retorno.unidadeMedida +"</td>";
 				//html += "<td>" + retorno.item.cardapio.id + "</td>";
-				html += "<td>" + retorno.item.pedido + "</td>";
-				html += "<td>" + retorno.item.quantidade + "</td>";
+				html += "<td>" + (retorno.preco+retorno.valorAcrescido) + "</td>";
+				html += "<td>" + retorno.item.quantidade +"</td>";
+                html += "<td>" + (retorno.item.quantidade*(retorno.preco+retorno.valorAcrescido)) +"</td>";
 					html += "</tr>";
 					$("#ajaxRetorno").append(html);
+
+                //Calculando o valor total
+                var valorTotal = 0;
+                if(document.getElementById('valorTotal').value===""){
+                    valorTotal += (retorno.item.quantidade*(retorno.preco+retorno.valorAcrescido));
+                }else {
+                 valorTotal += parseInt(document.getElementById('valorTotal').value)+(retorno.item.quantidade*(retorno.preco+retorno.valorAcrescido));
+                }
+                document.getElementById("valorTotal").value= valorTotal;
 			}
 		});
 	});
