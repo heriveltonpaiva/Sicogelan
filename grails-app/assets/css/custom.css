@@ -13,20 +13,22 @@
     GENERAL  STYLES    
     =============================================*/
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: Arial, serif, sans-serif;
 }
 
  #wrapper {
+     /**FUNDO DO MENU LATERAL **/
     width: 100%;
-    background:#202020;
+    background:#4D4D4D;
 }
-
+/** Muda a Cor do Sistema **/
 #page-wrapper {
     padding: 15px 15px;
     min-height: 600px;
-    background:#F3F3F3;
+    background:#fff;
    
 }
+/** Muda a cor do Sistema do coteúdo **/
 #page-inner {
     width:100%;
     margin:10px 20px 10px 0px;
@@ -201,21 +203,22 @@ color: #8d8888;
 -webkit-border-radius: 10px;
 -moz-border-radius: 10px;
 border-radius: 10px;
-max-height:170px;
-max-width:170px;
+max-height:150px;
+max-width:158px;
 }
 
 .navbar-cls-top .navbar-brand {
-	color: #fff;
-background: #C90000;
-width: 260px;
+    /** Cor do titulo do Sistema**/
+    color: #fff;
+background: #204d74;
+width: 300px;
 text-align: center;
 height: 60px;
 font-size: 30px;
 font-weight: 700;
 }
 .active-menu {
-    background-color:#C90000!important;
+ /**   background-color:#0f0f0f!important; **/
 }
 
 .arrow {
@@ -250,8 +253,9 @@ font-weight: 700;
 	padding:0;
 }
 .sidebar-collapse .nav > li > a {
-	color:#fff;
-	background:#202020;
+    /** COR DOS MENUS **/
+	color:#e1edf7;
+	background:#204d74;
 	text-shadow:none;
 	
 }
@@ -263,8 +267,8 @@ font-weight: 700;
 }
 .sidebar-collapse .nav > li > a:hover,
 .sidebar-collapse .nav > li > a:focus {
-	
-	background:#0A0A0A;
+	/** COR AO PASSAR O MOUSE EM CIMA DOS MENUS**/
+	background:#262626;
 	outline:0;
 }
 
@@ -276,7 +280,7 @@ font-weight: 700;
 	left:20px;
 	width:15px;
 	height:1px;
-	background:#ff0000;
+	background:lightseagreen;
 	top:20px;
 }
 .nav-second-level > li > a:after,
@@ -287,7 +291,7 @@ font-weight: 700;
 	left:20px;
 	width:1px;
 	height:100%;
-	background:#ff0000;
+	background:lightseagreen;
 	top:0px;
 	z-index:10;
 }
@@ -301,17 +305,19 @@ font-weight: 700;
 }
 .navbar-side {
 	border:none;
-	background-color: #202020;
+    /** FUNDO DOS MENUS **/
+	background-color: #4D4D4D;
 	
 }
 .navbar-cls-top {
+    /** DIV TOP **/
 	background:#4D4D4D;
 	border-bottom:none;
 	
 }
 .navbar-cls-top .navbar-brand:hover {
-
-background: #C90000;
+    /** TROCA DE COR DO FUNDO DO TITULO DO SISTEMA**/
+background: #4D4D4D;
 color:#fff;
 
 }
@@ -324,7 +330,7 @@ border:0px solid black;
     background: #A70303;
 }
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-background-color: #B40101;
+background-color: #4D4D4D;
 }
 .navbar-default .navbar-toggle {
 border-color: #fff;
@@ -356,8 +362,9 @@ line-height: 1.428571429;
     =============================================*/
  
  @media(min-width:768px) {
+     /** Largura do menu **/
      #page-wrapper{
-               margin: 0 0 0 260px;
+               margin: 0 0 0 300px;
         padding: 15px 30px;
         min-height: 1200px;
 		
@@ -365,13 +372,14 @@ line-height: 1.428571429;
 	
 	
     .navbar-side {
+        /** Largura dos Itens de Menus**/
         z-index: 1;
         position: absolute;
-        width: 260px;
+        width: 300px;
     }
 
    .navbar {
- border-radius: 0px; 
+ border-radius: 0px;
 }
    
 }
