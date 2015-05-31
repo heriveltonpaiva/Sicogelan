@@ -42,8 +42,13 @@
                                 <td>${fieldValue(bean: opcao, field: "descricao")} </td>
                             </div>
                             %{--<td>${OpcaoIngrediente.findByOpcaoCardapio(opcao)} </td>--}%
-                            <td>${opcao?.opcaoIngrediente} </td>
-                            <td>${fieldValue(bean: opcao, field: "preco")}</td>
+                            <g:if test="${opcao.opcaoIngrediente.isEmpty()}">
+                                <td>Não Possui Ingredientes</td>
+                            </g:if>
+                            <g:else>
+                                <td>${opcao?.opcaoIngrediente} </td>
+                            </g:else>
+                            <td><g:formatNumber number="${(opcao.preco)}" type="currency" /></td>
                             <td style="width:10px">
                             <div class="fieldcontain ${hasErrors(bean: itemPedidoInstance, field: 'quantidade', 'error')} required">
 
@@ -63,8 +68,8 @@
                             </div>
                             <td>
 
-                                <button type="submit" class="btn btn-warning">
-                                    Adicionar aos Pedidos
+                                <button type="submit" class="btn btn-info">
+                                    Adicionar ao Pedido
                                 </button>
                             </td>
                         </tr>
@@ -77,7 +82,6 @@
            </div>
         </div>
     </div>
-
 
 <g:form url="[resource:itemPedidoInstance, action:'save']"  name="frmItemPedido">
 

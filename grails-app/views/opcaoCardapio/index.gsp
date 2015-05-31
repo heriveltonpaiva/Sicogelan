@@ -63,7 +63,7 @@
                         </td>
 						<td><g:link action="show" id="${opcaoCardapioInstance.id}">${fieldValue(bean: opcaoCardapioInstance, field: "descricao")}</g:link></td>
 					
-						<td>${fieldValue(bean: opcaoCardapioInstance, field: "preco")}</td>
+						<td><g:formatNumber number="${(opcaoCardapioInstance.preco)}" type="currency" /></td>
 					
 						<td>${fieldValue(bean: opcaoCardapioInstance, field: "observacao")}</td>
 					
@@ -75,7 +75,12 @@
                         <td>
                             <img style="width: 100px; height: 100px" src="${createLink(controller:'arquivo', action:'showImagem', id:"${opcaoCardapioInstance.categoriaOpcaoCardapio.arquivo.id}")}" width='300' />
                         </td>
-                        <td>${fieldValue(bean: opcaoCardapioInstance, field: "opcaoIngrediente")}</td>
+                        <g:if test="${opcaoCardapioInstance.opcaoIngrediente.isEmpty()}">
+                            <td>Não Possui Ingredientes</td>
+                        </g:if>
+                        <g:else>
+                            <td>${opcaoCardapioInstance?.opcaoIngrediente} </td>
+                        </g:else>
                         <!-- ADICIONADO TD EDITAR E DELETAR  --->
                         <td class="col-md-1"> <!--TAG ADICIONADA -->
                         <g:form url="[resource:opcaoCardapioInstance, action:'delete']" method="DELETE"> <!--ALTER ENTITY -->

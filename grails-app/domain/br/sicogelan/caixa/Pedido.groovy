@@ -11,6 +11,7 @@ class Pedido {
      Mesa mesa
      RegistroGeral registroGeral
 
+
     static constraints = {
         status()
         valorTotal()

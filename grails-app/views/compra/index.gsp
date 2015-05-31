@@ -47,8 +47,8 @@
 					
 						<g:sortableColumn property="observacao" title="${message(code: 'compra.observacao.label', default: 'Observacao')}" />
 					
-						<th><g:message code="compra.registroGeral.label" default="Registro Geral" /></th>
-					
+						<th>Hora - Data </th>
+
 						<g:sortableColumn property="valor" title="${message(code: 'compra.valor.label', default: 'Valor')}" />
                         <td></td>  <!-- TAG ADICIONADA -->
 					</tr>
@@ -65,9 +65,9 @@
 					
 						<td>${fieldValue(bean: compraInstance, field: "observacao")}</td>
 					
-						<td>${fieldValue(bean: compraInstance, field: "registroGeral")}</td>
+						<td><g:formatDate format="HH:mm:ss - dd-MM-yyyy " date="${compraInstance.registroGeral.dateCreated}"/></td>
 					
-						<td>${fieldValue(bean: compraInstance, field: "valor")}</td>
+						<td><g:formatNumber number="${(compraInstance.valor)}" type="currency" /></td>
                         <!-- ADICIONADO TD EDITAR E DELETAR  --->
                         <td class="col-md-1">
                             <g:form url="[resource:compraInstance, action:'delete']" method="DELETE"> <!--ALTER ENTITY -->

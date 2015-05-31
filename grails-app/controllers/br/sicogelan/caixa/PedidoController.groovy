@@ -23,6 +23,13 @@ class PedidoController {
     def create() {
         respond new Pedido(params)
     }
+    /**
+     * Busca os itens do Pedido
+     */
+    def findItensPedido(){
+        println request.getParameter("idPedido")
+        respond ItemPedido.findByPedido(request.getParameter("idPedido")), view:'index'
+    }
 
     @Transactional
     def save(Pedido pedidoInstance) {

@@ -36,7 +36,9 @@
 
                                     <!-- #################### FIM ADICIONADO DIV 1 ############################## -->
 					<tr>
-					
+                        <th> <label for="status">
+                                        <g:message code="pedido.status.label" default="Status Pedido" />
+                        </label></th>
 						<g:sortableColumn property="status" title="${message(code: 'pedido.status.label', default: 'Status')}" />
 					
 						<g:sortableColumn property="valorTotal" title="${message(code: 'pedido.valorTotal.label', default: 'Valor Total')}" />
@@ -44,39 +46,59 @@
 						<g:sortableColumn property="statusConsumo" title="${message(code: 'pedido.statusConsumo.label', default: 'Status Consumo')}" />
 
 						<th><g:message code="pedido.mesa.label" default="Mesa" /></th>
-                         <th> <label for="status">
-                             <g:message code="pedido.status.label" default="Status Pedido" />
-                         </label></th>
-						<th>Opção Cardápio Pedidos</th>
+
+                        <th>Hora - Data</th>
+						<th><div align="center">Opção | Unidade Medida  | Quantidade | R$</div></th>
                         <td></td>  <!-- TAG ADICIONADA -->
 					</tr>
 				</thead>
 				<tbody>
 				<g:each in="${pedidoInstanceList}" status="i" var="pedidoInstance">
                     <tr class="gradeA">  <!--TAG ADICIONADA -->
-					
+                        <td>
+                            <div class="fieldcontain ${hasErrors(bean: pedidoInstance, field: 'status', 'error')} required">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <g:select id="status" name="status" from="['Para Fazer', 'Fazendo', 'Feito', 'Servido', 'Finalizado']"  required="" value="${pedidoInstance?.status}" class="form-control"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
 						<td><g:link action="show" id="${pedidoInstance.id}">${fieldValue(bean: pedidoInstance, field: "status")}</g:link></td>
 					
-						<td>${fieldValue(bean: pedidoInstance, field: "valorTotal")}</td>
+						<td><g:formatNumber number="${pedidoInstance.valorTotal}" type="currency"  /></td>
 					
 						<td>${fieldValue(bean: pedidoInstance, field: "statusConsumo")}</td>
 
 						<td>${fieldValue(bean: pedidoInstance, field: "mesa")}</td>
+
+                        <td><g:formatDate format="HH:mm:ss - dd-MM-yyyy " date="${pedidoInstance.registroGeral.dateCreated}"/></td>
                         <td>
-                        <div class="fieldcontain ${hasErrors(bean: pedidoInstance, field: 'status', 'error')} required">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <g:select id="status" name="status" from="['Para Fazer', 'Fazendo', 'Feito', 'Servido', 'Finalizado']"  required="" value="${pedidoInstance?.status}" class="form-control"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                           <table class="table table-striped table-hover">
+
+                            <tbody>
+                    <g:each in="${br.sicogelan.caixa.ItemPedido.findAllByPedido(pedidoInstance)}" status="b" var="item">
+                            <tr>
+                                <td>
+                                    <img style="width: 50px; height: 50px" src="${createLink(controller:'arquivo', action:'showImagem', id:"${item.opcaoCardapio.arquivo.id}")}" width='50' />
+                                </td>
+                                <td>${item.opcaoCardapio.descricao}</td>
+                                <td>${item.opcaoUnidadeMedida.descricao}</td>
+                                <td>${item.quantidade}</td>
+                                <td><g:formatNumber number="${(item.opcaoCardapio.preco+item.opcaoUnidadeMedida.valorAcrescido)*item.quantidade}" type="currency" /></td>
+                                <td> <button type="button" class="small btn-danger" title="Remover"><i class="fa fa-power-off"></i></button></td>
+                            </tr>
+                    </g:each>
+                            </tbody>
+                            </table>
+
+
                         </td>
-                        <td>${br.sicogelan.caixa.ItemPedido.findAllByPedido(pedidoInstance)}</td>
                         <!-- ADICIONADO TD EDITAR E DELETAR  --->
                         <td class="col-md-1"> <!--TAG ADICIONADA -->
-                   <button  class="btn btn-info col-sm-12" type="submit">Detalhar</button>
+                   <button  class="btn btn-info col-sm-12" type="button" ><i class="fa fa-save"></i>Finalizar</button>
                         <g:form url="[resource:pedidoInstance, action:'delete']" method="DELETE"> <!--ALTER ENTITY -->
                             <g:actionSubmit  class="btn btn-danger col-sm-12" action="delete" value="Cancelar" onclick="return confirm('${message(code: 'default.button.delete.confirm.message',
                                     default: 'Você tem certeza?')}');"/>
@@ -93,6 +115,7 @@
                 </div>
             </div>
         </div>
+        <p id="itensPedido"></p>
     <!--Paginador -->
     <nav>
         <ul class="pagination">
