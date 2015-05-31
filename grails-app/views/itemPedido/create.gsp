@@ -5,6 +5,7 @@
     <g:set var="entityName" value="${message(code: 'itemPedido.label', default: 'ItemPedido')}" /> <!-- ALTER ENTIDADE-->
     <title><g:message code="default.create.label" args="[entityName]" /></title>
 </head>
+
 <body>
 <!-- ############################## INICIO DIV ADICIONADO 1 ######################################################## !-->
 <div id="page-inner">

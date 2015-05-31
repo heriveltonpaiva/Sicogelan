@@ -7,7 +7,7 @@ import grails.transaction.Transactional
 import org.springframework.security.access.annotation.Secured
 
 @Transactional(readOnly = true)
-@Secured(['ROLE_ADMIN'])
+@Secured('isAuthenticated()')
 class ProdutoController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
@@ -75,6 +75,7 @@ class ProdutoController {
         }
     }
 
+    @Secured(['ROLE_ADMIN'])
     @Transactional
     def delete(Produto produtoInstance) {
 

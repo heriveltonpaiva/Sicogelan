@@ -7,7 +7,7 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import org.springframework.security.access.annotation.Secured
 @Transactional(readOnly = true)
-@Secured(['permitAll'])
+@Secured('isAuthenticated()')
 class CardapioController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]

@@ -37,7 +37,7 @@ font-size: 16px;"> <sec:ifLoggedIn>Bem vindo <sec:username/></sec:ifLoggedIn>
   </sec:ifNotLoggedIn>
       <span id='loginLink' style='position: relative; margin-right: 30px; float: right'>
           <sec:ifLoggedIn>
-              (<g:link href="/j_spring_security_logout">Logout</g:link>)
+              (<g:link controller='logout' action=''>Logout</g:link>)
           </sec:ifLoggedIn>
 
       </span>

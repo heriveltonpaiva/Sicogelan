@@ -6,7 +6,7 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import org.springframework.security.access.annotation.Secured
 @Transactional(readOnly = true)
-@Secured(['ROLE_ADMIN'])
+@Secured('isAuthenticated()')
 class CategoriaOpcaoCardapioController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
@@ -79,6 +79,7 @@ class CategoriaOpcaoCardapioController {
         }
     }
 
+    @Secured(['ROLE_ADMIN'])
     @Transactional
     def delete(CategoriaOpcaoCardapio categoriaOpcaoCardapioInstance) {
 

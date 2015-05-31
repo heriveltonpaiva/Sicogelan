@@ -59,11 +59,14 @@
                             <g:form url="[resource:cardapioInstance, action:'delete']" method="DELETE"> <!--ALTER ENTITY -->
 
                                 <g:link class="btn btn-primary col-sm-12 " action="edit" resource="${cardapioInstance}" ><g:message code="default.button.edit.label" default="Edit" /></g:link> <!--ALTER ENTITY -->
-                                <g:actionSubmit  class="btn btn-danger col-sm-12" action="delete" value="${message(code: 'default.button.delete.label',
-                                        default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message',
-                                        default: 'Você tem certeza?')}');"/>
+                                <sec:access expression="hasRole('ROLE_ADMIN')">
+                                    <g:actionSubmit  class="btn btn-danger col-sm-12" action="delete" value="${message(code: 'default.button.delete.label',
+                                            default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message',
+                                            default: 'Você tem certeza?')}');"/>
+                                    </sec:access>
+                                </g:form>
 
-                            </g:form>
+
                         </td>
                         <!-- FIM ADICIONADO TD EDITAR E DELETAR  --->
 					</tr>

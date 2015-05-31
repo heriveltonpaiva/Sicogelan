@@ -59,6 +59,7 @@
                         <g:form url="[resource:itemPedidoInstance, action:'delete']" method="DELETE"> <!--ALTER ENTITY -->
 
                             <g:link class="btn btn-primary col-sm-12 " action="edit" resource="${itemPedidoInstance}" ><g:message code="default.button.edit.label" default="Edit" /></g:link> <!--ALTER ENTITY -->
+
                             <g:actionSubmit  class="btn btn-danger col-sm-12" action="delete" value="${message(code: 'default.button.delete.label',
                                     default: 'Delete')}" onclick="return confirm('${message(code: 'default.button.delete.confirm.message',
                                     default: 'Você tem certeza?')}');"/>

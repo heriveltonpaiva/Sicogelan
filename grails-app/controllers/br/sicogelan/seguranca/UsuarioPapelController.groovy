@@ -6,7 +6,7 @@ import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 
 @Transactional(readOnly = true)
-@Secured(['permitAll'])
+@Secured(['ROLE_ADMIN'])
 class UsuarioPapelController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]

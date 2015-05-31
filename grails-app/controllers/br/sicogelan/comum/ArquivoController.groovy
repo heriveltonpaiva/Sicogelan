@@ -12,13 +12,12 @@ import grails.transaction.Transactional
  * https://grailsinaction.wordpress.com/2013/05/28/simplest-imagefile-grails-crud-using-a-data-base-as-a-storage/
  */
 @Transactional(readOnly = true)
-@Secured(['ROLE_ADMIN'])
+@Secured('isAuthenticated()')
 class ArquivoController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
      def indexTab = 0
-
     def index(Integer max) {
         def indexTab = 1
         params.max = Math.min(max ?: 5, 100)
@@ -67,7 +66,7 @@ class ArquivoController {
             '*' { render  status: CREATED}
         }
     }
-
+    @Secured(['ROLE_ADMIN'])
     def edit(Arquivo arquivoInstance) {
         indexTab=0
         respond(arquivoInstance, view: 'create')
@@ -96,6 +95,7 @@ class ArquivoController {
         }
     }
 
+    @Secured(['ROLE_ADMIN'])
     @Transactional
     def delete(Arquivo arquivoInstance) {
 

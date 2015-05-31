@@ -3,12 +3,13 @@ package br.sicogelan.caixa
 import br.sicogelan.comum.RegistroGeral
 import br.sicogelan.seguranca.Usuario
 import grails.converters.JSON
+import grails.plugin.springsecurity.SpringSecurityService
 import groovy.json.JsonSlurper
 import static org.springframework.http.HttpStatus.*
 import grails.transaction.Transactional
 import org.springframework.security.access.annotation.Secured
 @Transactional(readOnly = true)
-@Secured(['ROLE_ADMIN'])
+@Secured('isAuthenticated()')
 class ItemPedidoController {
 
     def listaItemPedidos = new ArrayList<ItemPedido>()
@@ -57,25 +58,26 @@ class ItemPedidoController {
 
         def pedido = new Pedido(params)
 
-        def valorTotal = 0;
-        listaItemPedidos.each {
-            it.setPedido(pedido)
-            valorTotal += (it.quantidade * it.opcaoCardapio.preco)+it.opcaoUnidadeMedida.valorAcrescido
-        }
-
-
         def registroGeral = new RegistroGeral()
 
-        registroGeral.setIp('127.0.0.1')
-        registroGeral.setUsuario(Usuario.findById(5))
+
+        registroGeral.setIp(request.getRemoteAddr())
+        registroGeral.setUsuario(Usuario.findByUsername('admin'))
+        println getSession().getAttribute('username')
         registroGeral.setPermissao('Acesso')
         registroGeral.save(flush: true)
 
+        def valorTotal = 0;
+        listaItemPedidos.each {
+            it.setPedido(pedido)
+            valorTotal += it.quantidade*(it.opcaoUnidadeMedida.valorAcrescido+it.opcaoCardapio.preco)
+        }
 
         pedido.setRegistroGeral(registroGeral)
         pedido.setStatus('Para Fazer')
         pedido.setValorTotal(valorTotal)
         pedido.save(flush: true)
+
 
         ItemPedido.saveAll(listaItemPedidos)
 
@@ -88,6 +90,7 @@ class ItemPedidoController {
         }
     }
 
+    @Secured(['ROLE_ADMIN'])
     def edit(ItemPedido itemPedidoInstance) {
         respond itemPedidoInstance
     }
@@ -115,6 +118,7 @@ class ItemPedidoController {
         }
     }
 
+    @Secured(['ROLE_ADMIN'])
     @Transactional
     def delete(ItemPedido itemPedidoInstance) {
 

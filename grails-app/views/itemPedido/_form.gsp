@@ -5,9 +5,12 @@
 <%@ page import="br.sicogelan.caixa.OpcaoUnidadeMedida" %>
 
     <div class="panel-body">
+        <div class="bs-docs-header" id="content" tabindex="-1">
+        </div>
         <div class="row">
             <div class="col-md-4">
                 <div class="form-group">
+
 	<label for="opcaoCategoria">
        Escolha uma Categoria:
     </label>
@@ -16,6 +19,7 @@
     </div>
            <div class="col-md-12">
                 <div class="panel panel-info">
+
 <div class="table-responsive">
             <table class="table table-striped table-bordered table-hover">
 
@@ -35,6 +39,7 @@
                     <form data-id="item_${opcao?.id}" data-url="${g.createLink(absolute:true, controller: 'itemPedido', action: 'adicionarItem')}">
                         <tr class="grade-x">
                             <g:hiddenField name="opcaoCardapio.id" value="${opcao.id}" />
+                            <g:hiddenField name="username" ><sec:username/></g:hiddenField>
                             <td>
                             <img style="width: 50px; height: 50px" src="${createLink(controller:'arquivo', action:'showImagem', id:"${opcao.arquivo.id}")}" />
                         </td>
