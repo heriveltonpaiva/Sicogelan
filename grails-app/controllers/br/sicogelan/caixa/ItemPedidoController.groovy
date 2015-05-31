@@ -80,7 +80,7 @@ class ItemPedidoController {
 
 
         ItemPedido.saveAll(listaItemPedidos)
-
+        listaItemPedidos = new ArrayList<ItemPedido>()
         request.withFormat {
             form multipartForm {
                 flash.message = 'Pedido Realizado com Sucesso.'

@@ -128,6 +128,7 @@ grails.plugin.springsecurity.authority.className = 'br.sicogelan.seguranca.Papel
 grails.plugin.springsecurity.controllerAnnotations.staticRules = [
 	'/':                              ['permitAll'],
 	'/index':                         ['permitAll'],
+    '/infoGrails':                    ['permitAll'],
     '/mobile':                        ['permitAll'],
     '/mobile/itemPedido':             ['permitAll'],
 	'/index.gsp':                     ['permitAll'],

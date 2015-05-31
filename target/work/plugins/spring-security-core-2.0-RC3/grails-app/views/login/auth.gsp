@@ -5,13 +5,13 @@
 </head>
 
 <body>
-<div class="row">
+<div class="row" align="center">
     <div class="col-md-5">
-        <div class="panel panel-default">
+        <div class="panel panel-info" >
             <div class="panel">
                 <div class="panel-body">
                     <div class="table-responsive">
-                    <h2 class="form-signin-heading">Sicogelan Login</h2>
+                    <h2 class="form-signin-heading" style="color: #204d74">Sicogelan Login</h2>
 
                             <form action='${postUrl}' method='POST' id='loginForm' class='form-signin-heading' autocomplete='off'>
                                 <div class="form-group">
@@ -30,7 +30,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <input class="btn btn-lg btn-danger btn-block" type='submit' id="submit" value='${message(code: "springSecurity.login.button")}'/>
+                                    <input class="btn btn-lg btn-info btn-block" type='submit' id="submit" value='${message(code: "springSecurity.login.button")}'/>
                                 </div>
                             </form>
 

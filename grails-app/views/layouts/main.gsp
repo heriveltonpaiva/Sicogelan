@@ -116,7 +116,7 @@ font-size: 16px;"> <sec:ifLoggedIn>Bem vindo <sec:username/></sec:ifLoggedIn>
                     </li>
 
                     <li>
-                        <a class="active-menu"  href=${createLink(uri: '')}><i class="fa fa-dashboard fa-3x"></i> Grails Info</a>
+                        <a class="active-menu"  href=${createLink(uri: '/infoGrails.gsp')}><i class="fa fa-dashboard fa-3x"></i> Grails Info</a>
                     </li>
                 </ul>
                
